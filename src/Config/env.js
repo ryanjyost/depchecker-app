@@ -2,13 +2,12 @@
 These are non-secret environment configs
  */
 
-const common = {
-   apiUrl: process.env.REACT_APP_ApiBaseUrl || 'https://dog.ceo/api',
-   clientUrl: process.env.REACT_APP_ClientUrl || 'http://localhost:3000'
-};
+const common = {};
 
 const LOCAL = {
-   envDisplay: 'Local'
+   envDisplay: 'Local',
+   clientUrl: 'http://localhost:3000',
+   apiUrl: 'http://localhost:5000'
 };
 
 const DEV = {

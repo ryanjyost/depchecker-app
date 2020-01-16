@@ -6,8 +6,8 @@ import logo from 'Assets/images/logo.svg';
 import { Layout, Menu, Icon } from 'antd';
 // util
 import { useResponsive } from 'Components/hooks';
-import { AppRoutes } from 'Routes';
-import { COLLAPSED_SIDEBAR_WIDTH } from 'Constants';
+// import { AppRoutes } from 'Routes';
+import { COLLAPSED_SIDEBAR_WIDTH } from 'Styles';
 // style
 import style from './mainSidebar.module.scss';
 
@@ -37,7 +37,7 @@ function MainSidebar(props) {
             {!isCollapsed && <h1 className={style.title}>React Starter</h1>}
          </div>
          <Menu theme="light" mode="inline" selectedKeys={[location.pathname]} className={style.Menu}>
-            {AppRoutes.map((route, i) => displayRoute(route))}
+            {/*{AppRoutes.map((route, i) => displayRoute(route))}*/}
          </Menu>
       </Sider>
    );

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Card, Input, Button } from 'antd';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { Actions } from 'Store';
+import { UserActions } from 'Store';
 import { RouteMap } from 'Routes';
 import { $envDisplay } from 'Config';
-import { StackedInputGroup } from '../../forms';
-import { LoadingPageWrapper } from '../../wrappers';
+import { StackedInputGroup } from 'Components/shared';
+import { LoadingPageWrapper } from 'Components/wrappers';
 import style from './login.module.scss';
 import { Login } from 'Components/pages/index';
 
@@ -70,7 +70,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
    return {
-      login: (username, password) => dispatch(Actions.login.request(username, password))
+      login: (username, password) => dispatch(UserActions.login.request(username, password))
    };
 };
 

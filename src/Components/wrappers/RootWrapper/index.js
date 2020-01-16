@@ -1,42 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import { Layout, message, BackTop } from 'antd';
 // components, constants, etc.
-import { ErrorBoundary } from 'Components/hoc';
+import ErrorBoundary from '../ErrorBoundary';
 import { ErrorPage } from 'Components/pages';
+import { Notifications } from 'Components/ui';
 import { $env, $envDisplay } from 'Config';
 import style from './rootWrapper.module.scss';
 
 /**
  * Wraps the entire app
  */
-class RootWrapper extends React.Component {
-   componentDidUpdate(prevProps) {
-      // show error banner if one found in redux
-      if (!prevProps.error && this.props.error) {
+function RootWrapper({ error, location, children }) {
+   // show error banner if one found in redux
+   useEffect(() => {
+      if (error) {
          message.error(this.props.error);
       }
+   }, [error]);
 
-      // when changing Routes, make sure scroll to top
-      if (this.props.location !== prevProps.location) {
-         window.scrollTo(0, 0);
-      }
-   }
+   // when changing Routes, make sure scroll to top
+   useEffect(() => {
+      window.scrollTo(0, 0);
+   }, [location]);
 
-   render() {
-      return (
-         <Layout className={style.Layout}>
-            <Helmet>
-               <title>{$env === 'PRODUCTION' ? 'React SPA Starter' : `${$envDisplay} - React SPA Starter`}</title>
-            </Helmet>
-            <ErrorBoundary renderError={ErrorPage}>{this.props.children}</ErrorBoundary>
-            <BackTop />
-         </Layout>
-      );
-   }
+   return (
+      <Layout className={style.Layout}>
+         <Helmet>
+            <title>{$env === 'PRODUCTION' ? 'DepChecker' : `${$envDisplay} - DepChecker`}</title>
+         </Helmet>
+         <Notifications/>
+         <ErrorBoundary renderError={ErrorPage}>{children}</ErrorBoundary>
+         <BackTop />
+      </Layout>
+   );
 }
 
 const mapStateToProps = state => {

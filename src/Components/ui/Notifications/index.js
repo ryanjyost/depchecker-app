@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { message } from 'antd';
 
 /**
  * Template for a functional component connected to the store
  */
-function CHANGE_ME({}) {
+function Notifications({}) {
    return null;
 }
 
@@ -17,10 +17,10 @@ const mapDispatchToProps = dispatch => {
    return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CHANGE_ME);
+export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
 
-CHANGE_ME.defaultProps = {};
+Notifications.defaultProps = {};
 
-CHANGE_ME.propTypes = {
+Notifications.propTypes = {
    /** Comment prop  */
 };

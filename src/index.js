@@ -4,16 +4,14 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import * as serviceWorker from './Services/serviceWorker';
-import configureStore from './Store';
+import { store, persistor } from 'Store';
 import routes from './Routes';
 import { RootWrapper } from './Components/wrappers';
 import { RootRouteWithSubRoutes } from './Components/routes';
-import './Styles/index.scss';
+import 'Styles/scss/index.scss';
 
 console.log('ENV', process.env.REACT_APP_ENV);
 console.log('Deployment Check', 2);
-
-const { store, persistor } = configureStore();
 
 ReactDOM.render(
    <Provider store={store}>

@@ -9,23 +9,30 @@ import watcherSaga from './watcherSaga';
 /**
  * Actions
  */
-import { actions as UserActions } from 'Store/user';
+import { actions as _UserActions } from 'Store/user';
+import { actions as _BasicActions } from 'Store/basic';
 
 /**
  * Reducers
  */
 import userReducer from 'Store/user';
+import basicReducer from 'Store/basic';
+
+// make actions available for dispatch
+export const UserActions = _UserActions;
+export const BasicActions = _BasicActions;
 
 /**
  * Configure store
  */
-export default function configureStore() {
+function configureStore() {
    const middleware = [];
    const enhancers = [];
 
    // map reducers to keys in the top level redux global state object
    const combinedReducers = combineReducers({
-      user: userReducer
+      user: userReducer,
+      basic: basicReducer
    });
 
    // set top-level pieces of the store to persist - can get more granular in each reducer
@@ -44,5 +51,5 @@ export default function configureStore() {
    return { store, persistor };
 }
 
-// make actions available for dispatch
-export const Actions = { ...UserActions };
+export const { store, persistor } = configureStore();
+export const { dispatch } = store;

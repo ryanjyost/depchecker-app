@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import { Layout, message } from 'antd';
 // components, libs, helpers, etc
 import { RouteMap } from 'Routes';
-import { MainSidebar, MainHeader, OverlayBackground } from 'Components/layout';
-import { ErrorBoundary } from 'Components/hoc';
+import { MainSidebar, MainHeader, OverlayBackground } from 'Components/ui';
+import ErrorBoundary from '../ErrorBoundary';
 import { ErrorPage, Login } from 'Components/pages';
 import { usePrevious } from 'Components/hooks';
 import { useResponsive } from 'Components/hooks';
 // style
 import style from './appRoutesWrapper.module.scss';
-import PropTypes from 'prop-types';
 const { Content } = Layout;
 
 /**

@@ -7,7 +7,12 @@ body {
 }
 
 code {
-   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace !important;
+   color: rgba(24, 144, 255, 1);
+   background-color: rgba(24, 144, 255, 0.05) !important;
+   padding: 2px 5px;
+   border-radius: 3px;
+   border: none !important;
 }
 
 h1,
@@ -17,5 +22,5 @@ h4,
 h5,
 h6,
 p {
-   margin-bottom: 0 !important;
+   margin-bottom: 0;
 }

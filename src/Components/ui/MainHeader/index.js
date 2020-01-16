@@ -8,7 +8,7 @@ import { RouteMap } from 'Routes';
 import { useResponsive } from 'Components/hooks';
 import { $envDisplay } from 'Config';
 // store
-import { Actions } from 'Store';
+import { UserActions } from 'Store';
 // style
 import style from './mainHeader.module.scss';
 
@@ -51,7 +51,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
    return {
-      logout: () => dispatch(Actions.logout())
+      logout: () => dispatch(UserActions.logout())
    };
 };
 

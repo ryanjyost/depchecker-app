@@ -10,9 +10,11 @@ else if (env === 'STAGING') config = staging;
 else if (env === 'DEV') config = dev;
 
 config = { ...config, ...process.env };
+console.log('CONFIG', config);
 
 // Config variables
 export const $env = env;
 export const $envDisplay = config.envDisplay;
 export const $ApiBaseUrl = config.apiUrl;
 export const $ClientUrl = config.clientUrl;
+export const $Colors = config.colors;

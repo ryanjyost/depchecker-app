@@ -1,3 +1,7 @@
-export const COLLAPSED_SIDEBAR_WIDTH = 80;
-export const EXPANDED_SIDEBAR_WIDTH = 80;
-export const APP_HEADER_HEIGHT = 60;
+export const SEVERITY_LEVELS = {
+   NA: 0,
+   GOOD: 1,
+   FINE: 2,
+   WARNING: 3,
+   BAD: 4
+};

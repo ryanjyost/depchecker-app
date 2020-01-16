@@ -1,124 +1,43 @@
 import React from 'react';
 import { Typography } from 'antd';
-import { Login } from 'Components/pages';
-import { RootAppComponentWithRoutes, RootRouteWithSubRoutes } from 'Components/routes';
+import { Home, BasicStart, BasicRepoUrl, BasicResults, BasicUploadFile, BasicPasteCode } from 'Components/pages';
+import { RootRouteWithSubRoutes } from 'Components/routes';
 const { Title } = Typography;
 
 /**
  * An array of route configs, with nested objects/arrays in the same structure of the app's routes
  */
 const ROUTES = [
-   { key: 'ROOT', path: '/', title: 'Home', component: Login, exact: true },
+   { key: 'ROOT', path: '/', title: 'Home', component: Home, exact: true },
    {
-      key: 'APP_ROOT',
-      path: '/app',
-      title: 'App',
-      component: RootAppComponentWithRoutes,
+      key: 'BASIC_ROOT',
+      path: '/basic',
+      title: 'Basic',
+      component: RootRouteWithSubRoutes,
       routes: [
+         { key: 'BASIC_INDEX', path: '/basic', title: 'Basic', component: BasicStart, exact: true },
          {
-            key: 'APP_INDEX',
-            path: '/app',
-            title: 'Home',
-            component: () => <Title>Welcome to the App</Title>,
-            icon: 'home',
+            key: 'BASIC_REPO_URL',
+            path: '/basic/repo-url',
+            title: 'Basic Repo Url',
+            component: BasicRepoUrl,
             exact: true
          },
          {
-            key: 'APP_PAGE',
-            path: '/app/page',
-            title: 'App Page',
-            component: () => <Title>App Page</Title>,
-            icon: 'file',
+            key: 'BASIC_UPLOAD',
+            path: '/basic/upload',
+            title: 'Basic Upload',
+            component: BasicUploadFile,
             exact: true
          },
          {
-            key: 'SECTION_1_ROOT',
-            path: '/app/section1',
-            title: 'Section 1',
-            component: RootRouteWithSubRoutes,
-            icon: 'smile',
-            routes: [
-               {
-                  key: 'SECTION_1_INDEX',
-                  path: '/app/section1',
-                  exact: true,
-                  title: 'Index Page',
-                  component: () => <Title>Index Page</Title>
-               },
-               {
-                  key: 'SECTION_1_PAGE',
-                  path: '/app/section1/page',
-                  exact: true,
-                  title: 'Another Page',
-                  component: () => <Title>Another Page</Title>
-               },
-               {
-                  key: 'SECTION_1_SUBSECTION_1',
-                  path: '/app/section1/subsection',
-                  title: 'Subsection',
-                  component: RootRouteWithSubRoutes,
-                  routes: [
-                     {
-                        key: 'SECTION_1_SUBSECTION_1_INDEX',
-                        path: '/app/section1/subsection',
-                        exact: true,
-                        title: 'Subsection Index',
-                        component: () => <Title>Subsection Index</Title>
-                     },
-                     {
-                        key: 'SECTION_1_SUBSECTION_1_PAGE',
-                        path: '/app/section1/subsection/page',
-                        title: 'Subsection Page',
-                        component: () => <Title>Subsection Page</Title>
-                     }
-                  ]
-               }
-            ]
+            key: 'BASIC_CODE_PASTE',
+            path: '/basic/code',
+            title: 'Basic Paste Code',
+            component: BasicPasteCode,
+            exact: true
          },
-         {
-            key: 'SECTION_2_ROOT',
-            path: '/app/section2',
-            title: 'Section 2',
-            component: RootRouteWithSubRoutes,
-            icon: 'frown',
-            routes: [
-               {
-                  key: 'SECTION_2_INDEX',
-                  path: '/app/section2',
-                  exact: true,
-                  title: 'Index Page',
-                  component: () => <Title>Index Page</Title>
-               },
-               {
-                  key: 'SECTION_2_PAGE',
-                  path: '/app/section2/page',
-                  exact: true,
-                  title: 'Another Page',
-                  component: () => <Title>Another Page</Title>
-               },
-               {
-                  key: 'SECTION_2_SUBSECTION_2',
-                  path: '/app/section2/subsection',
-                  title: 'Subsection',
-                  component: RootRouteWithSubRoutes,
-                  routes: [
-                     {
-                        key: 'SECTION_2_SUBSECTION_2_INDEX',
-                        path: '/app/section2/subsection',
-                        exact: true,
-                        title: 'Subsection Index',
-                        component: () => <Title>Subsection Index</Title>
-                     },
-                     {
-                        key: 'SECTION_2_SUBSECTION_2_PAGE',
-                        path: '/app/section2/subsection/page',
-                        title: 'Subsection Page',
-                        component: () => <Title>Subsection Page</Title>
-                     }
-                  ]
-               }
-            ]
-         }
+         { key: 'BASIC_RESULTS', path: '/basic/results', title: 'Basic Results', component: BasicResults, exact: true }
       ]
    }
 ];
