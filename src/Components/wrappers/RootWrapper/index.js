@@ -7,7 +7,6 @@ import { Layout, message, BackTop } from 'antd';
 // components, constants, etc.
 import ErrorBoundary from '../ErrorBoundary';
 import { ErrorPage } from 'Components/pages';
-import { Notifications } from 'Components/ui';
 import { $env, $envDisplay } from 'Config';
 import style from './rootWrapper.module.scss';
 
@@ -32,7 +31,6 @@ function RootWrapper({ error, location, children }) {
          <Helmet>
             <title>{$env === 'PRODUCTION' ? 'DepChecker' : `${$envDisplay} - DepChecker`}</title>
          </Helmet>
-         <Notifications/>
          <ErrorBoundary renderError={ErrorPage}>{children}</ErrorBoundary>
          <BackTop />
       </Layout>

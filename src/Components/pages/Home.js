@@ -54,9 +54,6 @@ function Home({ analyzePackageJSON }) {
          <Divider />
          <PromptTitle>Get started with an option below.</PromptTitle>
          <LinkContainer>
-            {/*<UserFlowOption title="Link your GitHub profile" link={RouteMap.BASIC_INDEX}>*/}
-            {/*   Allow the DepChecker GitHub App to analyze your repos automatically.*/}
-            {/*</UserFlowOption>*/}
             <UserFlowOption title="Quick analysis" link={RouteMap.BASIC_INDEX}>
                Easily upload a <code>package.json</code> file and generate a dependency report. No GitHub authorization
                required.

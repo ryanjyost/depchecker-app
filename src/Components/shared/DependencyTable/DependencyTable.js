@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
@@ -7,37 +8,10 @@ import numeral from 'numeral';
 import { Icon, Tooltip, Tag } from 'antd';
 import { Table } from 'Components/shared';
 import { SEVERITY_COLORS } from 'Styles';
+import { NameContainer, NameLink, LinksContainer, LinkIcon, SeverityTag, DevTag } from './dependencyTable.styled';
 
 TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo('en-US');
-
-const NameContainer = styled.div`
-   display: flex;
-   flex-direction: column;
-`;
-
-const NameLink = styled.a`
-   color: rgba(0, 0, 0, 0.9);
-`;
-
-const LinksContainer = styled.div``;
-
-const LinkIcon = styled.a`
-   margin-right: 8px;
-
-   i {
-      font-size: 13px;
-   }
-`;
-
-const SeverityTag = styled(Tag)`
-   font-size: 14px;
-   padding: 3px 6px;
-`;
-
-const DevTag = styled(Tag)`
-   margin-left: 5px;
-`;
 
 export default function DependencyTable({ dependencies }) {
    const columns = useMemo(
@@ -151,8 +125,6 @@ export default function DependencyTable({ dependencies }) {
    return <Table columns={columns} data={data} />;
 }
 
-DependencyTable.defaultProps = {};
-
 DependencyTable.propTypes = {
-   /** Comment prop  */
+   dependencies: PropTypes.array
 };

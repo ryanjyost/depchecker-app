@@ -7,10 +7,17 @@ export function generateRouteMap(routes) {
    let pathMap = {},
       configMap = {};
    for (let route of routes) {
-      pathMap[route.key] = route.path;
-      configMap[route.key] = route;
-      if (route.routes) {
-         const { pathMap: nestedPaths, configMap: nestedConfigMap } = generateRouteMap(route.routes);
+      const routeCopy = { ...route };
+
+      // no need for the component
+      delete routeCopy.component;
+
+      pathMap[route.key] = routeCopy.path;
+      configMap[route.key] = routeCopy;
+
+      // nested routes? keep generating
+      if (routeCopy.routes) {
+         const { pathMap: nestedPaths, configMap: nestedConfigMap } = generateRouteMap(routeCopy.routes);
          pathMap = { ...pathMap, ...nestedPaths };
          configMap = { ...configMap, ...nestedConfigMap };
       }

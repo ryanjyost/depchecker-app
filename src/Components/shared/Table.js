@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react';
-import styled from '@emotion/styled';
+import React from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 import { useTable } from 'react-table';
 
-/**
- * General Table Component
- */
 const StyledTable = styled.table`
    border-spacing: 0;
    min-width: 900px;
@@ -27,13 +24,14 @@ const StyledTable = styled.table`
    }
 `;
 
+/**
+ * General Table Component
+ */
 export default function Table({ columns, data }) {
    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
       columns,
       data
    });
-
-   useEffect(() => console.log(data), []);
 
    return (
       <StyledTable {...getTableProps()}>
@@ -62,8 +60,9 @@ export default function Table({ columns, data }) {
    );
 }
 
-Table.defaultProps = {};
-
 Table.propTypes = {
-   /** Comment prop  */
+   /** Column definitions */
+   columns: PropTypes.array,
+   /** Table data */
+   data: PropTypes.array
 };

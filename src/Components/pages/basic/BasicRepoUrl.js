@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import PropTypes from "prop-types"
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { connect } from 'react-redux';
@@ -44,20 +45,16 @@ function BasicRepoUrl({ analyzeRepoUrl }) {
    );
 }
 
-const mapStateToProps = state => {
-   return {};
-};
-
 const mapDispatchToProps = dispatch => {
    return {
       analyzeRepoUrl: url => dispatch(BasicActions.analyzeRepoUrl.request(url))
    };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BasicRepoUrl);
+export default connect(null, mapDispatchToProps)(BasicRepoUrl);
 
 BasicRepoUrl.defaultProps = {};
 
 BasicRepoUrl.propTypes = {
-   /** Comment prop  */
+   analyzeRepoUrl: PropTypes.func
 };

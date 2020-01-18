@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import { AppRoutesWrapper } from '../wrappers';
 import { NotFound } from '../pages';
@@ -17,6 +18,10 @@ export const RootRouteWithSubRoutes = ({ routes }) => {
    );
 };
 
+RootRouteWithSubRoutes.propTypes = {
+   routes: PropTypes.array
+};
+
 /**
  * Specific top level route component with app wrapper
  */
@@ -26,6 +31,10 @@ export const RootAppComponentWithRoutes = ({ routes }) => {
          <RootRouteWithSubRoutes routes={routes} />
       </AppRoutesWrapper>
    );
+};
+
+RootAppComponentWithRoutes.propTypes = {
+   routes: PropTypes.array
 };
 
 /**

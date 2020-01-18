@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { connect } from 'react-redux';
@@ -9,6 +10,7 @@ import { BasicActions } from 'Store';
 import { Typography, Button } from 'antd';
 import { FullScreenContainer } from 'Components/ui';
 import { RouteMap } from 'Routes';
+import { convertJSONStringToJs } from 'Util/index';
 const { Title } = Typography;
 
 const SubmitLink = styled(Link)`
@@ -39,24 +41,14 @@ function BasicRepoUrl({ analyzePackageJSON }) {
          return false;
       }
 
-      let parsedJSON = null;
-      try {
-         parsedJSON = JSON.parse(stringToParse);
-      } catch (e) {
-         parsedJSON = {};
-      }
-
+      let parsedJSON = convertJSONStringToJs(packageJSONString);
+      console.log(stringToParse);
+      console.log(parsedJSON);
       return 'dependencies' in parsedJSON || 'devDependencies' in parsedJSON;
    }
 
    function handleSubmit() {
-      let parsedJSON = null;
-      try {
-         parsedJSON = JSON.parse(packageJSONString);
-      } catch (e) {
-         parsedJSON = {};
-      }
-      analyzePackageJSON(parsedJSON);
+      analyzePackageJSON(convertJSONStringToJs(packageJSONString));
    }
 
    return (
@@ -82,20 +74,16 @@ function BasicRepoUrl({ analyzePackageJSON }) {
    );
 }
 
-const mapStateToProps = state => {
-   return {};
-};
-
 const mapDispatchToProps = dispatch => {
    return {
       analyzePackageJSON: packageJSON => dispatch(BasicActions.analyzePackageJSON.request(packageJSON))
    };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BasicRepoUrl);
+export default connect(null, mapDispatchToProps)(BasicRepoUrl);
 
 BasicRepoUrl.defaultProps = {};
 
 BasicRepoUrl.propTypes = {
-   /** Comment prop  */
+   analyzePackageJSON: PropTypes.func
 };
