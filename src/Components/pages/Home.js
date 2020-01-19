@@ -46,15 +46,15 @@ function Home({ analyzePackageJSON }) {
 
    return (
       <FullScreenContainer column alignItems="center" margin={'150px 0px 0px 0px'}>
-         <Title>Work on JavaScript projects?</Title>
-         <SubTitle>
-            <AppName>DepChecker</AppName> makes it easy to understand the state of your projects' npm dependencies, so
-            that you can more efficiently make version updates, discover potential issues and maintain your software.
-         </SubTitle>
-         <Divider />
+         {/*<Title>Work on JavaScript projects?</Title>*/}
+         {/*<SubTitle>*/}
+         {/*   <AppName>DepChecker</AppName> makes it easy to understand the state of your projects' npm dependencies, so*/}
+         {/*   that you can more efficiently make version updates, discover potential issues and maintain your software.*/}
+         {/*</SubTitle>*/}
+         {/*<Divider />*/}
          <PromptTitle>Get started with an option below.</PromptTitle>
          <LinkContainer>
-            <UserFlowOption title="Quick analysis" link={RouteMap.BASIC_INDEX}>
+            <UserFlowOption title="Quick analysis" link={RouteMap.BASIC_METHOD}>
                Easily upload a <code>package.json</code> file and generate a dependency report. No GitHub authorization
                required.
             </UserFlowOption>

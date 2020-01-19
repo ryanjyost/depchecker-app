@@ -1,14 +1,21 @@
 import React, { useEffect, useMemo } from 'react';
+import { withRouter } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { connect } from 'react-redux';
 import { Typography, message } from 'antd';
 import { DependencyTable, AnalysisSummary } from 'Components/shared';
+import { BasicActions } from 'Store';
+import BasicHeader from 'Components/ui/BasicHeader';
 const { Title } = Typography;
 
 const Root = styled.div`
+  background-color: #fff;
+`
+
+const MainContainer = styled.div`
    display: flex;
    flex-direction: column;
-   padding: 2rem;
+   padding: 2rem 2rem 2rem 2rem;
    background-color: #fff;
    min-height: 100vh;
    min-width: 100%;
@@ -20,7 +27,7 @@ const SectionTitle = styled(Title)`
    font-weight: 500 !important;
 `;
 
-function BasicResults({ dependencies, summary, packageJSON, fetching }) {
+function BasicResults({ dependencies, summary, packageJSON, fetching, match, analyzeRepoUrl }) {
    const MESSAGE_KEY = 'BASIC_RESULTS_PROGRESS';
    const numDepsInRepo = useMemo(() => {
       if (!packageJSON) return null;
@@ -29,6 +36,16 @@ function BasicResults({ dependencies, summary, packageJSON, fetching }) {
       return devDeps.length + deps.length;
    }, [packageJSON]);
 
+   useEffect(() => {
+      const {
+         params: { owner, repo }
+      } = match;
+      if (owner && repo) {
+         analyzeRepoUrl(`https://github.com/${owner}/${repo}`);
+      }
+   }, []);
+
+   //show messages as deps are being analyzed
    useEffect(() => {
       if (fetching) {
          message.loading({
@@ -43,6 +60,7 @@ function BasicResults({ dependencies, summary, packageJSON, fetching }) {
       }
    }, [dependencies]);
 
+   // show final success message when all done
    useEffect(() => {
       if (summary) {
          message.success({
@@ -54,11 +72,15 @@ function BasicResults({ dependencies, summary, packageJSON, fetching }) {
 
    return (
       <Root>
-         <SectionTitle level={3}>
-            Dependency Report {packageJSON ? `for` : null} <strong>{packageJSON ? `${packageJSON.name}` : null}</strong>
-         </SectionTitle>
-         <AnalysisSummary data={summary} />
-         <DependencyTable dependencies={dependencies} />
+         <BasicHeader />
+         <MainContainer>
+            <SectionTitle level={3}>
+               Dependency Report {packageJSON ? `for` : null}{' '}
+               <strong>{packageJSON ? `${packageJSON.name}` : null}</strong>
+            </SectionTitle>
+            <AnalysisSummary data={summary} />
+            <DependencyTable dependencies={dependencies} />
+         </MainContainer>
       </Root>
    );
 }
@@ -67,7 +89,13 @@ const mapStateToProps = state => {
    return state.basic;
 };
 
-export default connect(mapStateToProps, null)(BasicResults);
+const mapDispatchToProps = dispatch => {
+   return {
+      analyzeRepoUrl: url => dispatch(BasicActions.analyzeRepoUrl.request(url))
+   };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(BasicResults));
 
 BasicResults.defaultProps = {};
 

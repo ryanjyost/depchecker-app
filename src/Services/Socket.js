@@ -12,9 +12,7 @@ export default function createSocket() {
     * Listeners
     */
    // initial ping from server-side that socket opened
-   socket.on('socketId', data => {
-      console.log('SOCKET ID', data);
-   });
+   socket.on('socketId', data => false);
 
    socket.on('basic/packageJSON', data => dispatch(BasicActions.updatePackageJSON(data)));
    socket.on('basic/singleDepData', data => dispatch(BasicActions.updateSingleDep(data)));

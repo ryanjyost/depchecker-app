@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
@@ -29,8 +29,12 @@ const editorStyle = {
    maxWidth: 600
 };
 
-function BasicRepoUrl({ analyzePackageJSON }) {
+function BasicRepoUrl({ analyzePackageJSON, clearPackageJSON }) {
    const [packageJSONString, updatePackageJSONString] = useState('');
+
+   useEffect(() => {
+      clearPackageJSON();
+   }, []);
 
    function handleChange(val) {
       updatePackageJSONString(val);
@@ -76,7 +80,8 @@ function BasicRepoUrl({ analyzePackageJSON }) {
 
 const mapDispatchToProps = dispatch => {
    return {
-      analyzePackageJSON: packageJSON => dispatch(BasicActions.analyzePackageJSON.request(packageJSON))
+      analyzePackageJSON: packageJSON => dispatch(BasicActions.analyzePackageJSON.request(packageJSON)),
+      clearPackageJSON: () => dispatch(BasicActions.updatePackageJSON(null))
    };
 };
 

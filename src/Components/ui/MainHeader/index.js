@@ -28,18 +28,20 @@ function MainHeader(props) {
             isMediumOrSmaller ? style.noSidebar : sidebarIsCollapsed ? style.collapsed : style.expanded
          }`}>
          <div className={style.titleWrapper}>
-            <Icon
+            {toggleCollapsed &&  <Icon
                id={'sideBarToggle'}
                className={style.icon}
                type={sidebarIsCollapsed ? 'menu-unfold' : 'menu-fold'}
                onClick={toggleCollapsed}
-            />
+            /> }
             <Title level={4}>{`${$envDisplay} Environment`}</Title>
          </div>
          <div>
-            <Link to={RouteMap.ROOT} style={{ margin: '0px 10px' }} onClick={logout}>
-               Logout
-            </Link>
+            {logout && (
+               <Link to={RouteMap.ROOT} style={{ margin: '0px 10px' }} onClick={logout}>
+                  Logout
+               </Link>
+            )}
          </div>
       </Header>
    );
@@ -51,7 +53,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
    return {
-      logout: () => dispatch(UserActions.logout())
+      // logout: () => dispatch(UserActions.logout())
    };
 };
 

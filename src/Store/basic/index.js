@@ -133,7 +133,10 @@ function readPackageJSONReducer(state = InitialState, action) {
  * Save single dep analysis data from socket
  */
 const UPDATE_SINGLE_DEP = 'basic/UPDATE_SINGLE_DEP';
-const updateSingleDep = data => ({ type: UPDATE_SINGLE_DEP, data });
+const updateSingleDep = data => {
+   console.log('SINGLE DEP', data);
+   return { type: UPDATE_SINGLE_DEP, data };
+};
 
 /**
  * Save single dep analysis data from socket

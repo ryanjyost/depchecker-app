@@ -15,11 +15,13 @@ const DEV = {
 };
 
 const STAGING = {
-   envDisplay: 'Staging'
+   envDisplay: 'Staging',
+   apiUrl: 'https://depchecker-api.herokuapp.com'
 };
 
 const PRODUCTION = {
-   envDisplay: 'Production'
+   envDisplay: 'Production',
+   apiUrl: 'https://depchecker-api.herokuapp.com'
 };
 
 export const local = { ...common, ...LOCAL };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
 import styled from '@emotion/styled';
@@ -50,7 +50,11 @@ const hasFileStyle = {
    cursor: 'pointer'
 };
 
-function BasicUploadFile({ packageJSON, analyzePackageJSON, readPackageJSON }) {
+function BasicUploadFile({ packageJSON, analyzePackageJSON, readPackageJSON, clearPackageJSON }) {
+   useEffect(() => {
+      clearPackageJSON();
+   }, []);
+
    function handleSubmit() {
       analyzePackageJSON(packageJSON);
    }
@@ -155,7 +159,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
    return {
       analyzePackageJSON: data => dispatch(BasicActions.analyzePackageJSON.request(data)),
-      readPackageJSON: formData => dispatch(BasicActions.readPackageJSON.request(formData))
+      readPackageJSON: formData => dispatch(BasicActions.readPackageJSON.request(formData)),
+      clearPackageJSON: () => dispatch(BasicActions.updatePackageJSON(null))
    };
 };
 

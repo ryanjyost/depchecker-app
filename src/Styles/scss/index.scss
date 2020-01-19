@@ -24,3 +24,35 @@ h6,
 p {
    margin-bottom: 0;
 }
+
+
+.pulsingButton {
+   background-color: rgba(24, 144, 255,1);
+   -webkit-animation: glowing 1500ms infinite;
+   -moz-animation: glowing 1500ms infinite;
+   -o-animation: glowing 1500ms infinite;
+   animation: glowing 1500ms infinite;
+}
+@-webkit-keyframes glowing {
+   0% { background-color: rgba(24, 144, 255,1); -webkit-box-shadow: 0 0 3px rgba(24, 144, 255,1); }
+   50% { background-color: rgba(24, 144, 255,1); -webkit-box-shadow: 0 0 40px rgba(24, 144, 255,1); }
+   100% { background-color: rgba(24, 144, 255,1); -webkit-box-shadow: 0 0 3px rgba(24, 144, 255,1); }
+}
+
+@-moz-keyframes glowing {
+   0% { background-color: rgba(24, 144, 255,1); -webkit-box-shadow: 0 0 3px rgba(24, 144, 255,1); }
+   50% { background-color: rgba(24, 144, 255,1); -webkit-box-shadow: 0 0 40px rgba(24, 144, 255,1); }
+   100% { background-color: rgba(24, 144, 255,1); -webkit-box-shadow: 0 0 3px rgba(24, 144, 255,1); }
+}
+
+@-o-keyframes glowing {
+   0% { background-color: rgba(24, 144, 255,1); -webkit-box-shadow: 0 0 3px rgba(24, 144, 255,1); }
+   50% { background-color: rgba(24, 144, 255,1); -webkit-box-shadow: 0 0 40px rgba(24, 144, 255,1); }
+   100% { background-color: rgba(24, 144, 255,1); -webkit-box-shadow: 0 0 3px rgba(24, 144, 255,1); }
+}
+
+@keyframes glowing {
+   0% { background-color: rgba(24, 144, 255,0.9); -webkit-box-shadow: 0 0 1px rgba(24, 144, 255,0.5);  }
+   50% { background-color: rgba(24, 144, 255,1); -webkit-box-shadow: 0 0 10px rgba(24, 144, 255,0.8); }
+   100% { background-color: rgba(24, 144, 255,0.9); -webkit-box-shadow: 0 0 1px rgba(24, 144, 255,0.5);  }
+}
