@@ -6,17 +6,18 @@ import { Typography, message } from 'antd';
 import { DependencyTable, AnalysisSummary } from 'Components/shared';
 import { BasicActions } from 'Store';
 import BasicHeader from 'Components/ui/BasicHeader';
+import { COLORS } from 'Styles';
 const { Title } = Typography;
 
 const Root = styled.div`
-  background-color: #fff;
-`
+   
+`;
 
 const MainContainer = styled.div`
    display: flex;
    flex-direction: column;
    padding: 2rem 2rem 2rem 2rem;
-   background-color: #fff;
+ 
    min-height: 100vh;
    min-width: 100%;
    overflow: auto;
@@ -25,6 +26,8 @@ const MainContainer = styled.div`
 const SectionTitle = styled(Title)`
    margin-bottom: 20px !important;
    font-weight: 500 !important;
+   border-bottom: 3px solid ${COLORS.whiteOp(0.2)};
+   padding-bottom: 8px;
 `;
 
 function BasicResults({ dependencies, summary, packageJSON, fetching, match, analyzeRepoUrl }) {
@@ -40,6 +43,13 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
       const {
          params: { owner, repo }
       } = match;
+      const repoUrl = `https://github.com/${owner}/${repo}`;
+
+      console.log('pakage', packageJSON)
+      if (packageJSON && packageJSON.name && packageJSON.name === repo) {
+         return null;
+      }
+
       if (owner && repo) {
          analyzeRepoUrl(`https://github.com/${owner}/${repo}`);
       }
@@ -75,7 +85,6 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
          <BasicHeader />
          <MainContainer>
             <SectionTitle level={3}>
-               Dependency Report {packageJSON ? `for` : null}{' '}
                <strong>{packageJSON ? `${packageJSON.name}` : null}</strong>
             </SectionTitle>
             <AnalysisSummary data={summary} />

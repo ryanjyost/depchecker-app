@@ -3,6 +3,9 @@ import { Typography } from 'antd';
 import styled from '@emotion/styled';
 import { FullScreenContainer, UserFlowOption } from 'Components/ui';
 import { RouteMap } from 'Routes';
+import examplePackageJSON from 'Assets/package.example';
+import { BasicActions } from 'Store';
+import { connect } from 'react-redux';
 
 const { Title } = Typography;
 
@@ -15,7 +18,10 @@ const LinkContainer = styled.div`
    flex-direction: column;
 `;
 
-export default function BasicStart() {
+function BasicStart({analyzePackageJSON}) {
+   function startExample() {
+      analyzePackageJSON(examplePackageJSON);
+   }
    return (
       <FullScreenContainer column alignItems={'center'} margin={'200px 0px 0px 0px'}>
          <TitleText level={3}>
@@ -34,6 +40,10 @@ export default function BasicStart() {
             <UserFlowOption title="Paste the code" link={RouteMap.BASIC_CODE_PASTE}>
                Just copy and paste the contents of your <code>package.json</code> file.
             </UserFlowOption>
+            <UserFlowOption title="Try an example" link={RouteMap.BASIC_RESULTS} onClick={startExample}>
+               Choose this if you're not quite sure what DepChecker does to see it analyze an example project's
+               dependencies.
+            </UserFlowOption>
          </LinkContainer>
       </FullScreenContainer>
    );
@@ -44,3 +54,15 @@ BasicStart.defaultProps = {};
 BasicStart.propTypes = {
    /** Comment prop  */
 };
+
+const mapStateToProps = state => {
+   return {};
+};
+
+const mapDispatchToProps = dispatch => {
+   return {
+      analyzePackageJSON: data => dispatch(BasicActions.analyzePackageJSON.request(data))
+   };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BasicStart);

@@ -29,6 +29,8 @@ export const COLORS = {
    primaryOp: (opacity = 1) => `rgba(${process.env.REACT_APP_PRIMARY_COLOR}, ${opacity})`,
    black: `rgb(0,0,0)`,
    blackOp: (opacity = 1) => `rgba(0,0,0, ${opacity})`,
-   blue: "rgba(24, 144, 255, 1)",
+   blue: 'rgba(24, 144, 255, 1)',
    blueOp: opacity => `rgba(24, 144, 255, ${opacity})`,
+   white: 'rgba(255, 255, 255, 1)',
+   whiteOp: opacity => `rgba(255, 255, 255, ${opacity})`
 };

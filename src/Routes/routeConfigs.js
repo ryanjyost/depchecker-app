@@ -1,6 +1,15 @@
 import React from 'react';
 import { Typography } from 'antd';
-import { MarketingLanding, Home, BasicStart, BasicRepoUrl, BasicResults, BasicUploadFile, BasicPasteCode } from 'Components/pages';
+import {
+   MarketingLanding,
+   Home,
+   BasicStart,
+   BasicRepoUrl,
+   BasicResults,
+   BasicUploadFile,
+   BasicPasteCode,
+   FullAnalysisOptions
+} from 'Components/pages';
 import { RootRouteWithSubRoutes } from 'Components/routes';
 const { Title } = Typography;
 
@@ -15,8 +24,8 @@ const ROUTES = [
       title: 'Basic',
       component: RootRouteWithSubRoutes,
       routes: [
-         { key: 'BASIC_INDEX', path: '/basic', title: 'Basic Start', component: Home, exact: true },
-         { key: 'BASIC_METHOD', path: '/basic/method', title: 'Basic', component: BasicStart, exact: true },
+         // { key: 'BASIC_INDEX', path: '/basic', title: 'Basic Start', component: Home, exact: true },
+         { key: 'BASIC_INDEX', path: '/basic', title: 'Basic', component: BasicStart, exact: true },
          {
             key: 'BASIC_REPO_URL',
             path: '/basic/repo-url',
@@ -39,7 +48,22 @@ const ROUTES = [
             exact: true
          },
          { key: 'BASIC_RESULTS', path: '/basic/results', title: 'Basic Results', component: BasicResults, exact: true },
-         { key: 'DIRECT_RESULTS', path: '/basic/:owner/:repo', title: 'Direct Repo Results', component: BasicResults, exact: true }
+         {
+            key: 'DIRECT_RESULTS',
+            path: '/basic/:owner/:repo',
+            title: 'Direct Repo Results',
+            component: BasicResults,
+            exact: true
+         }
+      ]
+   },
+   {
+      key: 'ANALYSIS_ROOT',
+      path: '/analysis',
+      title: 'Analysis',
+      component: RootRouteWithSubRoutes,
+      routes: [
+         { key: 'ANALYSIS_INDEX', path: '/analysis', title: 'Analysis', component: FullAnalysisOptions, exact: true }
       ]
    }
 ];

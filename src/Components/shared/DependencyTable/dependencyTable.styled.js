@@ -7,7 +7,7 @@ export const NameContainer = styled.div`
 `;
 
 export const NameLink = styled.a`
-   color: rgba(0, 0, 0, 0.9);
+   //color: rgba(0, 0, 0, 0.9);
 `;
 
 export const LinksContainer = styled.div``;

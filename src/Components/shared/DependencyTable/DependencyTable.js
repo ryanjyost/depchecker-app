@@ -7,7 +7,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 import { Icon, Tooltip, Tag } from 'antd';
 import { Table } from 'Components/shared';
-import { SEVERITY_COLORS } from 'Styles';
+import { COLORS, SEVERITY_COLORS } from 'Styles';
 import { NameContainer, NameLink, LinksContainer, LinkIcon, SeverityTag, DevTag } from './dependencyTable.styled';
 
 TimeAgo.addLocale(en);
@@ -26,7 +26,7 @@ export default function DependencyTable({ dependencies }) {
                return (
                   <NameContainer>
                      <NameLink href={links ? links.homepage : null} target={'_blank'}>
-                        <strong>{data.cell.value}</strong> {original.isDev && <DevTag>dev</DevTag>}
+                        <strong style={{color: COLORS.whiteOp(0.8)}}>{data.cell.value}</strong> {original.isDev && <DevTag>dev</DevTag>}
                      </NameLink>
                      <LinksContainer>
                         <Tooltip title={original.description} placement={'right'}>

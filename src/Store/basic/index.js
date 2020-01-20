@@ -134,7 +134,7 @@ function readPackageJSONReducer(state = InitialState, action) {
  */
 const UPDATE_SINGLE_DEP = 'basic/UPDATE_SINGLE_DEP';
 const updateSingleDep = data => {
-   console.log('SINGLE DEP', data);
+   // console.log('SINGLE DEP', data);
    return { type: UPDATE_SINGLE_DEP, data };
 };
 

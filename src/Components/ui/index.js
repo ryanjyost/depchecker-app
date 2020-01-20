@@ -3,11 +3,13 @@ import _MainHeader from './MainHeader';
 import _MainSidebar from './MainSidebar';
 import _OverlayBackground from './OverlayBackground';
 import _UserFlowOption from './UserFlowOption';
+import _BasicHeader from './BasicHeader';
 
 export const MainHeader = _MainHeader;
 export const MainSidebar = _MainSidebar;
 export const OverlayBackground = _OverlayBackground;
 export const UserFlowOption = _UserFlowOption;
+export const BasicHeader = _BasicHeader;
 
 export const FullScreenContainer = styled.div`
    display: flex;

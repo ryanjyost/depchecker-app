@@ -11,7 +11,7 @@ const Root = styled(Header)`
    display: flex;
    align-items: center;
    justify-content: space-between;
-   padding: 0px 20px !important;
+   padding: 0px 30px !important;
 `;
 
 const LogoContainer = styled(Link)`
@@ -24,8 +24,7 @@ const LogoImage = styled.img`
 `;
 
 const LogoText = styled(Title)`
-   margin: 0px 0px 0px 5px !important;
-   color: ${COLORS.blackOp(0.6)} !important;
+   margin: 0px 0px 0px 10px !important;
 `;
 
 const LinkContainer = styled.div`
@@ -34,7 +33,7 @@ const LinkContainer = styled.div`
 `;
 
 const HeaderLink = styled.a`
-margin: 0px 10px;
+  margin: 0px 10px;
 `;
 
 export default function BasicHeader() {

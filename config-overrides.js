@@ -4,6 +4,7 @@ Learn more --> https://github.com/timarney/react-app-rewired#how-to-rewire-your-
  */
 const { override, fixBabelImports, addLessLoader, useBabelRc, useEslintRc } = require('customize-cra');
 const ENV = require('./.env-cmdrc.js');
+const darkTheme = require('./src/Styles/darkTheme');
 
 module.exports = override(
    useBabelRc(),
@@ -16,6 +17,6 @@ module.exports = override(
       javascriptEnabled: true,
       // Override antd less variables here
       // https://ant.design/docs/react/customize-theme
-      modifyVars: { '@primary-color': 'rgb(' + ENV.common.REACT_APP_PRIMARY_COLOR + ')' }
+      modifyVars: darkTheme
    })
 );
