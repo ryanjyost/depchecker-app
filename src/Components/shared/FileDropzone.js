@@ -7,21 +7,22 @@ import { COLORS } from 'Styles';
 const baseStyle = {
    borderWidth: 2,
    borderColor: COLORS.whiteOp(0.3),
-   borderStyle: 'dashed',
+   borderStyle: 'dotted',
    borderRadius: 3,
-   padding: '20px 10px',
+   padding: '30px 45px',
    display: 'flex',
    flexDirection: 'column',
    justifyContent: 'center',
    alignItems: 'center',
-   width: '100%',
-   maxWidth: 500,
-   margin: '20px 0px',
-   height: 200
+   // width: '100%',
+   // maxWidth: 500,
+   width: '100%'
+   // margin: '20px 0px',
+   // height: 200
 };
 const activeStyle = {
    borderStyle: 'solid',
-   borderColor: COLORS.primaryOp(0.8),
+   borderColor: COLORS.primaryOp(0.8)
 };
 const rejectStyle = {
    borderStyle: 'solid',
@@ -34,7 +35,7 @@ const hasFileStyle = {
    cursor: 'pointer'
 };
 
-export default function FileDropzone({ onDrop, hasFile }) {
+export default function FileDropzone({ onDrop, hasFile, children }) {
    return (
       <Dropzone onDrop={onDrop} accept="application/json" noClick={!hasFile}>
          {({ getRootProps, getInputProps, isDragActive, isDragReject, open }) => {
@@ -43,15 +44,15 @@ export default function FileDropzone({ onDrop, hasFile }) {
             styles = isDragActive ? { ...styles, ...activeStyle } : styles;
             styles = isDragReject ? { ...styles, ...rejectStyle } : styles;
 
-            let text = 'Drag your file here or';
+            let text = (
+               <span>
+                  Drag & drop your <code style={{ fontSize: 12 }}>package.json</code>
+               </span>
+            );
             if (isDragActive && !isDragReject) {
                text = <strong>{`Drop it like it's hot`}</strong>;
             } else if (hasFile) {
-               text = (
-                  <span>
-                     package.json is ready to analyze
-                  </span>
-               );
+               text = <span>package.json is ready to analyze</span>;
             } else if (isDragReject) {
                text = (
                   <span>
@@ -63,44 +64,56 @@ export default function FileDropzone({ onDrop, hasFile }) {
             return (
                <div {...getRootProps()} style={styles} id={'dropzone'}>
                   <input {...getInputProps()} />
-
-                  {isDragReject ? (
-                     <Icon
-                        style={{
-                           fontSize: 40,
-                           color: COLORS.red
-                        }}
-                        type="stop"
-                     />
-                  ) : (
-                     <Icon
-                        style={{
-                           fontSize: 40,
-                           color: hasFile && !isDragActive ? COLORS.primaryOp(1) : COLORS.primaryOp(0.7)
-                        }}
-                        type={isDragActive ? 'fire' : hasFile ? 'check-circle' : 'cloud-upload'}
-                     />
-                  )}
-
                   <div
                      style={{
                         display: 'flex',
+                        flexDirection: 'column',
                         alignItems: 'center',
-                        marginTop: 10
+                        marginTop: 20
                      }}>
+                     {isDragReject ? (
+                        <Icon
+                           style={{
+                              fontSize: 40,
+                              color: COLORS.red
+                           }}
+                           type="stop"
+                        />
+                     ) : (
+                        <Icon
+                           style={{
+                              fontSize: 40,
+                              color: hasFile && !isDragActive ? COLORS.primaryOp(1) : COLORS.primaryOp(0.7)
+                           }}
+                           type={isDragActive ? 'fire' : hasFile ? 'check-circle' : 'cloud-upload'}
+                        />
+                     )}
                      <div
                         style={{
                            marginRight: 10,
-                           fontSize: 16
+                           marginBottom: 15,
+                           marginTop: 15,
+                           fontSize: 14,
+                           opacity: 0.8,
+                           display: 'flex',
+                           flexWrap: 'wrap',
+                           alignItems: 'center',
+                           justifyContent: 'center'
                         }}>
-                        {text}
+                        {text}{' '}
                      </div>
                      {isDragActive || hasFile ? null : (
-                        <Button id={'browseFiles'} size={'small'} type="primary" onClick={() => open()}>
-                           browse
+                        <Button
+                           id={'browseFiles'}
+                           type="primary"
+                           size="small"
+                           onClick={() => open()}
+                           style={{ padding: '0px 10px', marginBottom: 20 }}>
+                           Browse your files
                         </Button>
                      )}
                   </div>
+                  {isDragActive || hasFile || !children ? null : children}
                </div>
             );
          }}

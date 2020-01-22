@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { connect } from 'react-redux';
@@ -7,7 +7,6 @@ import { BasicActions } from 'Store';
 import { Typography, Input, Button } from 'antd';
 import { FullScreenContainer } from 'Components/ui';
 import { RouteMap } from 'Routes';
-
 const { Title } = Typography;
 
 const RepoUrlInput = styled(Input)`
@@ -31,8 +30,9 @@ function BasicRepoUrl({ analyzeRepoUrl }) {
 
    return (
       <FullScreenContainer column justifyContent={'center'} alignItems={'center'}>
-         <Title level={3}>Paste a GitHub Repo URL below</Title>
+         <Title level={3}>Provide a repo URL</Title>
          <RepoUrlInput
+            value={url}
             placeholder={'https://github.com/ryanjyost/react-spa-starter'}
             onChange={e => updateUrl(e.target.value)}
          />

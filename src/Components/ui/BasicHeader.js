@@ -1,17 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { Layout, Typography } from 'antd';
+import { Button, Layout, Typography } from 'antd';
+import GitHubButton from 'react-github-btn';
 import { COLORS } from 'Styles';
 const { Header } = Layout;
 const { Title } = Typography;
 
 const Root = styled(Header)`
-   background-color: transparent;
+   background-color: ${COLORS.black};
    display: flex;
    align-items: center;
    justify-content: space-between;
    padding: 0px 30px !important;
+   //position: fixed;
+   z-index: 1;
+   width: 100%;
 `;
 
 const LogoContainer = styled(Link)`
@@ -33,7 +37,7 @@ const LinkContainer = styled.div`
 `;
 
 const HeaderLink = styled.a`
-  margin: 0px 10px;
+   margin: 10px 20px 0px 10px;
 `;
 
 export default function BasicHeader() {
@@ -44,8 +48,13 @@ export default function BasicHeader() {
             <LogoText level={4}>DepChecker</LogoText>
          </LogoContainer>
          <LinkContainer>
-            <HeaderLink href="mailto:ryanjyost@gmail.com?subject=DepChecker">Contact</HeaderLink>
-            <HeaderLink href="https://github.com/ryanjyost/depchecker">GitHub</HeaderLink>
+            <GitHubButton
+               href="https://github.com/ryanjyost/depchecker"
+               data-color-scheme="no-preference: light; light: light; dark: dark;"
+               data-size="large"
+               aria-label="Star ryanjyost/depchecker on GitHub">
+               Star
+            </GitHubButton>
          </LinkContainer>
       </Root>
    );

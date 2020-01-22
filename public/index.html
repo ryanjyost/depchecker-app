@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet" />
       <!-- Google Tag Manager -->
-      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-KWLK4D3');</script>
+      <script>
+         (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+               j = d.createElement(s),
+               dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+         })(window, document, 'script', 'dataLayer', 'GTM-KWLK4D3');
+      </script>
       <!-- End Google Tag Manager -->
 
       <meta charset="utf-8" />
@@ -21,14 +28,14 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
       <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-      <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-      <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png">
-      <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
-      <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
-      <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest">
-      <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#5bbad5">
-      <meta name="msapplication-TileColor" content="#da532c">
-      <meta name="theme-color" content="#ffffff">
+      <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+      <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
+      <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
+      <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#5bbad5" />
+      <meta name="msapplication-TileColor" content="#da532c" />
+      <meta name="theme-color" content="#ffffff" />
       <!--
         Notice the use of %PUBLIC_URL% in the tags above.
         It will be replaced with the URL of the `public` folder during the build.
@@ -39,29 +46,38 @@
         Learn how to configure a non-root public URL by running `npm run build`.
       -->
       <title>DepChecker - npm dependency analysis & monitoring</title>
-      <meta name="title" content="DepChecker - npm dependency analysis & monitoring">
-      <meta name="description"
-            content="DepChecker makes it easy to understand the state of your projects' npm dependencies, so that you can more efficiently make version updates, discover potential issues and maintain your software.">
+      <meta name="title" content="DepChecker - npm dependency analysis & monitoring" />
+      <meta
+         name="description"
+         content="DepChecker makes it easy to understand the state of your projects' npm dependencies, so that you can more efficiently make version updates, discover potential issues and maintain your software."
+      />
 
       <!-- Open Graph / Facebook -->
-      <meta property="og:type" content="website">
-      <meta property="og:url" content="https://depchecker.com/">
-      <meta property="og:title" content="DepChecker - npm dependency analysis & monitoring">
-      <meta property="og:description"
-            content="DepChecker makes it easy to understand the state of your projects' npm dependencies, so that you can more efficiently make version updates, discover potential issues and maintain your software.">
-      <meta property="og:image" content="%PUBLIC_URL%/depchecker-preview.png">
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://depchecker.com/" />
+      <meta property="og:title" content="DepChecker - npm dependency analysis & monitoring" />
+      <meta
+         property="og:description"
+         content="DepChecker makes it easy to understand the state of your projects' npm dependencies, so that you can more efficiently make version updates, discover potential issues and maintain your software."
+      />
+      <meta property="og:image" content="%PUBLIC_URL%/depchecker-preview.png" />
 
       <!-- Twitter -->
-      <meta property="twitter:card" content="summary_large_image">
-      <meta property="twitter:url" content="ryanjyost">
-      <meta property="twitter:title" content="DepChecker - npm dependency analysis & monitoring">
-      <meta property="twitter:description"
-            content="DepChecker makes it easy to understand the state of your projects' npm dependencies, so that you can more efficiently make version updates, discover potential issues and maintain your software.">
-      <meta property="twitter:image" content="%PUBLIC_URL%/depchecker-preview.png">
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="ryanjyost" />
+      <meta property="twitter:title" content="DepChecker - npm dependency analysis & monitoring" />
+      <meta
+         property="twitter:description"
+         content="DepChecker makes it easy to understand the state of your projects' npm dependencies, so that you can more efficiently make version updates, discover potential issues and maintain your software."
+      />
+      <meta property="twitter:image" content="%PUBLIC_URL%/depchecker-preview.png" />
 
       <style>
+         body {
+            background-color: #000;
+         }
          #skeleton-root {
-            background-color: #f0f2f5;
+            background-color: #000;
             height: 100vh;
             width: 100%;
             display: flex;
@@ -91,5 +107,8 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+      <!-- Place this tag in your head or just before your close body tag. -->
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
    </body>
 </html>

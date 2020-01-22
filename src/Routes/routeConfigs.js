@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from 'antd';
 import {
-   MarketingLanding,
+   PremiumLanding,
    Home,
    BasicStart,
    BasicRepoUrl,
@@ -17,7 +17,8 @@ const { Title } = Typography;
  * An array of route configs, with nested objects/arrays in the same structure of the app's routes
  */
 const ROUTES = [
-   { key: 'ROOT', path: '/', title: 'Landing', component: MarketingLanding, exact: true },
+   { key: 'INDEX', path: '/', title: 'Analysis', component: FullAnalysisOptions, exact: true },
+   { key: 'LANDING_PREMIUM', path: '/premium', title: 'Premium', component: PremiumLanding, exact: true },
    {
       key: 'BASIC_ROOT',
       path: '/basic',
@@ -55,15 +56,6 @@ const ROUTES = [
             component: BasicResults,
             exact: true
          }
-      ]
-   },
-   {
-      key: 'ANALYSIS_ROOT',
-      path: '/analysis',
-      title: 'Analysis',
-      component: RootRouteWithSubRoutes,
-      routes: [
-         { key: 'ANALYSIS_INDEX', path: '/analysis', title: 'Analysis', component: FullAnalysisOptions, exact: true }
       ]
    }
 ];
