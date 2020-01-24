@@ -36,7 +36,7 @@ const LinkContainer = styled.div`
    align-items: center;
 `;
 
-const HeaderLink = styled.a`
+const IssuesLink = styled.a`
    margin: 10px 20px 0px 10px;
 `;
 
@@ -48,6 +48,11 @@ export default function BasicHeader() {
             <LogoText level={4}>DepChecker</LogoText>
          </LogoContainer>
          <LinkContainer>
+            <IssuesLink href={'https://github.com/ryanjyost/depchecker/issues/new'} target={'_blank'}>
+               <Button type="default" size="small" shape="round">
+                  Submit issues & feature ideas
+               </Button>
+            </IssuesLink>
             <GitHubButton
                href="https://github.com/ryanjyost/depchecker"
                data-color-scheme="no-preference: light; light: light; dark: dark;"

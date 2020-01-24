@@ -10,7 +10,7 @@ const gold = '250, 173, 20';
 const red = '245, 34, 45';
 
 export const SEVERITY_COLOR_CODES = [
-   'rgba(0, 0, 0, 0.65)',
+   'rgba(255, 255, 255, 0.65)',
    `rgb(${green})`,
    `rgb(${cyan})`,
    `rgb(${gold})`,

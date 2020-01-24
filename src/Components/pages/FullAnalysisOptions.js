@@ -55,7 +55,7 @@ const RepoUrlLabel = styled(Text)`
 
 const ExampleLink = styled(Link)`
    margin-top: 10px;
-   opacity: 0.6;
+   opacity: 0.9;
 `;
 
 const LeftSideContainer = styled.div`
@@ -90,6 +90,7 @@ const ReadyContainer = styled.div`
 
    a {
       width: 90%;
+      max-width: 200px;
       text-align: center;
       margin-top: 10px;
    }
@@ -282,15 +283,14 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
       return (
          <RepoAnalysisInfo>
             <div>
-               <Title level={2}>Work on JavaScript software?</Title>
+               <Title level={2}>Maintain JavaScript projects?</Title>
                <InfoText>
                   DepChecker is a free tool that makes it easy to analyze and monitor your npm dependencies. So you can
-                  efficiently make version updates, discover potential issues and more confidently maintain your
-                  code.
+                  discover potential issues early on and more confidently maintain your code.
                </InfoText>
             </div>
             <Link to={RouteMap.LANDING_PREMIUM || '/'}>
-               <Button shape="round">Learn about DepChecker Premium</Button>
+               <Button shape="round">Learn about <strong>&nbsp;DepChecker Pro</strong></Button>
             </Link>
          </RepoAnalysisInfo>
       );

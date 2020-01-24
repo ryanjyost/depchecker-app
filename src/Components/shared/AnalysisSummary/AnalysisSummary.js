@@ -18,22 +18,22 @@ const sections = [
    {
       metric: 'versionsBehind',
       title: 'Versions Behind',
-      labels: ['analysis errors', 'up to date', 'only patches behind', 'minors behind', 'majors behind']
+      labels: ['unknown', 'up to date', 'only patches behind', 'minors behind', 'majors behind']
    },
    {
       metric: 'lastPublish',
       title: 'Last Publish',
-      labels: ['analysis errors', '< 2 months ago', '> 2 months ago', '> 6 months ago', '> a year ago']
+      labels: ['unknown', '< 2 months ago', '> 2 months ago', '> 6 months ago', '> a year ago']
    },
    {
       metric: 'weeklyDownloads',
       title: 'Weekly Downloads',
-      labels: ['analysis errors', '> 100k', 'between 10k and 100k', 'between 1k and 10k', '< 1k downloads']
+      labels: ['unknown', '> 100k', 'between 10k and 100k', 'between 1k and 10k', '< 1k downloads']
    },
    {
       metric: 'stars',
       title: 'GitHub Stars',
-      labels: ['had analysis errors', '> 1k', 'between 300 and 1k', 'between 50 and 300', '< 50']
+      labels: ['unknown', '> 1k', 'between 300 and 1k', 'between 50 and 300', '< 50']
    }
 ];
 

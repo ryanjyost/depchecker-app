@@ -2,23 +2,25 @@ import React, { useEffect, useMemo } from 'react';
 import { withRouter } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { connect } from 'react-redux';
-import { Typography, message } from 'antd';
+import { Typography, message, Layout } from 'antd';
 import { DependencyTable, AnalysisSummary } from 'Components/shared';
 import { BasicActions } from 'Store';
 import BasicHeader from 'Components/ui/BasicHeader';
 import { COLORS } from 'Styles';
+import { BasicFooter } from 'Components/ui';
 const { Title } = Typography;
 
 const Root = styled.div`
-   
+   min-height: 100vh;
+   width: 100vw;
+   display: flex;
+   flex-direction: column;
 `;
 
-const MainContainer = styled.div`
+const MainContainer = styled(Layout.Content)`
    display: flex;
    flex-direction: column;
    padding: 2rem 2rem 2rem 2rem;
- 
-   min-height: 100vh;
    min-width: 100%;
    overflow: auto;
 `;
@@ -45,7 +47,7 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
       } = match;
       const repoUrl = `https://github.com/${owner}/${repo}`;
 
-      console.log('pakage', packageJSON)
+      console.log('pakage', packageJSON);
       if (packageJSON && packageJSON.name && packageJSON.name === repo) {
          return null;
       }
@@ -90,6 +92,7 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
             <AnalysisSummary data={summary} />
             <DependencyTable dependencies={dependencies} />
          </MainContainer>
+         <BasicFooter />
       </Root>
    );
 }
