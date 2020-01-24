@@ -7,7 +7,7 @@ export const NameContainer = styled.div`
 `;
 
 export const NameLink = styled.a`
-   color: rgba(0, 0, 0, 0.9);
+   //color: rgba(0, 0, 0, 0.9);
 `;
 
 export const LinksContainer = styled.div``;
@@ -23,6 +23,7 @@ export const LinkIcon = styled.a`
 export const SeverityTag = styled(Tag)`
    font-size: 14px;
    padding: 3px 6px;
+   border: ${props =>!props.color ? `0px solid transparent` : undefined}
 `;
 
 export const DevTag = styled(Tag)`

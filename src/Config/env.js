@@ -16,7 +16,7 @@ const DEV = {
 
 const STAGING = {
    envDisplay: 'Staging',
-   apiUrl: 'https://depchecker-api.herokuapp.com'
+   apiUrl: 'https://depchecker-api-staging.herokuapp.com'
 };
 
 const PRODUCTION = {

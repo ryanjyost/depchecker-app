@@ -37,7 +37,6 @@ export const Metric = styled.div`
    display: flex;
    align-items: center;
    span {
-      color: rgba(0, 0, 0, 0.4);
       font-size: 0.8rem;
       max-width: 200px;
       line-height: 1.2;

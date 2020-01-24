@@ -7,13 +7,14 @@ import moment from 'moment';
 import numeral from 'numeral';
 import { Icon, Tooltip, Tag } from 'antd';
 import { Table } from 'Components/shared';
-import { SEVERITY_COLORS } from 'Styles';
+import { COLORS, SEVERITY_COLORS } from 'Styles';
 import { NameContainer, NameLink, LinksContainer, LinkIcon, SeverityTag, DevTag } from './dependencyTable.styled';
 
 TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo('en-US');
 
 export default function DependencyTable({ dependencies }) {
+   console.log('DEPS', dependencies);
    const columns = useMemo(
       () => [
          {
@@ -26,7 +27,8 @@ export default function DependencyTable({ dependencies }) {
                return (
                   <NameContainer>
                      <NameLink href={links ? links.homepage : null} target={'_blank'}>
-                        <strong>{data.cell.value}</strong> {original.isDev && <DevTag>dev</DevTag>}
+                        <strong style={{ color: COLORS.whiteOp(0.8) }}>{data.cell.value}</strong>{' '}
+                        {original.isDev && <DevTag>dev</DevTag>}
                      </NameLink>
                      <LinksContainer>
                         <Tooltip title={original.description} placement={'right'}>
@@ -54,14 +56,14 @@ export default function DependencyTable({ dependencies }) {
                );
             }
          },
-         { Header: 'Project', accessor: 'versions.project' },
-         { Header: 'LTS', accessor: 'versions.latest' },
+         { Header: 'Project', accessor: row => row.versions.project || '?' },
+         { Header: 'LTS', accessor: row => row.versions.latest || '?' },
          {
             Header: 'Versions Behind',
             accessor: 'versionsBehind.text',
             Cell: data => (
                <SeverityTag color={SEVERITY_COLORS[data.row.original.levels['versionsBehind']]}>
-                  {data.cell.value}
+                  {data.cell.value || '?'}
                </SeverityTag>
             )
          },
@@ -70,16 +72,16 @@ export default function DependencyTable({ dependencies }) {
             accessor: row => moment(row.time.latest).unix(),
             Cell: data => (
                <SeverityTag color={SEVERITY_COLORS[data.row.original.levels['lastPublish']]}>
-                  {timeAgo.format(moment.unix(data.cell.value).toDate())}
+                  {data.cell.value ? timeAgo.format(moment.unix(data.cell.value).toDate()) : '?'}
                </SeverityTag>
             )
          },
          {
             Header: 'Weekly Downloads',
-            accessor: 'downloads.weekly.downloads',
+            accessor: 'weeklyDownloads',
             Cell: data => (
                <SeverityTag color={SEVERITY_COLORS[data.row.original.levels['weeklyDownloads']]}>
-                  {numeral(data.cell.value).format('0,0')}
+                  {data.cell.value < 0 ? '?' : numeral(data.cell.value).format('0,0')}
                </SeverityTag>
             )
          },
@@ -88,22 +90,34 @@ export default function DependencyTable({ dependencies }) {
             accessor: 'stars',
             Cell: data => (
                <SeverityTag color={SEVERITY_COLORS[data.row.original.levels['stars']]}>
-                  {numeral(data.cell.value).format('0,0')}
+                  {data.cell.value < 0 ? '?' : numeral(data.cell.value).format('0,0')}
                </SeverityTag>
             )
          },
          {
             Header: 'License',
-            accessor: row => row.license.spdx_id || row.license,
-            Cell: data => (
-               <SeverityTag color={SEVERITY_COLORS[data.row.original.levels['license']]}>{data.cell.value}</SeverityTag>
-            )
+            accessor: row => {
+               return row.license
+                  ? typeof row.license === 'object'
+                     ? row.license.spdx_id || row.license.key
+                     : row.license
+                  : row.license;
+            },
+            Cell: data => {
+               return (
+                  <SeverityTag color={SEVERITY_COLORS[data.row.original.levels['license']]}>
+                     {data.cell.value || '?'}
+                  </SeverityTag>
+               );
+            }
          },
          {
             Header: 'Issues & PRs',
             accessor: 'openIssues',
             Cell: data =>
-               data.row.original.links.github ? (
+               data.cell.value < 0 ? (
+                  <div>?</div>
+               ) : data.row.original.links.github ? (
                   <a href={`${data.row.original.links.github}/issues`}>{data.cell.value}</a>
                ) : (
                   <div>{data.cell.value}</div>

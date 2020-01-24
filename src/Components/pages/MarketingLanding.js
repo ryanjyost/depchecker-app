@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
+import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { Button, Icon } from 'antd';
 import { RouteMap as ROUTES } from 'Routes';
 import { COLORS } from 'Styles';
 import { MainHeader } from 'Components/ui';
 import BasicHeader from 'Components/ui/BasicHeader';
-import ExampleImage from 'Assets/images/depchecker-preview.png';
 import { useResponsive } from 'Components/hooks';
+
+const Root = styled.div`
+   .anticon {
+      color: ${COLORS.blue} !important;
+   }
+`;
 
 export default function Landing() {
    const styles = { ...COLORS };
@@ -26,8 +32,8 @@ export default function Landing() {
             }}>
             <Icon
                style={{
+                  color: COLORS.white,
                   fontSize: 40,
-                  color: styles.blue,
                   margin: '2px 5px'
                }}
                type={icon}
@@ -37,12 +43,11 @@ export default function Landing() {
                <h4
                   style={{
                      marginBottom: 10,
-                     color: styles.blackOp(0.6),
                      lineHeight: 1.2
                   }}>
-                  <strong style={{ color: styles.blackOp(0.8) }}>{title} </strong>
+                  <strong>{title} </strong>
                </h4>
-               <h5 style={{ marginBottom: 0, color: styles.blackOp(0.6) }}>{desc}</h5>
+               <h5 style={{ marginBottom: 0,opacity: 0.7, }}>{desc}</h5>
             </div>
          </div>
       );
@@ -63,7 +68,6 @@ export default function Landing() {
                      fontSize: 36,
                      lineHeight: 1.2,
                      fontWeight: '700',
-                     color: styles.blackOp(0.95),
                      paddingRight: 20,
                      marginBottom: 20
                   }}>
@@ -72,15 +76,16 @@ export default function Landing() {
                <h2
                   style={{
                      lineHeight: 1.4,
-                     color: styles.blackOp(0.6),
                      fontSize: 18,
                      marginBottom: 20,
                      paddingRight: 20
                   }}>
                   {/*Quickly and easily discover dependency management opportunities that lead to better software, more*/}
                   {/*billable hours and happier clients.*/}
-                  DepChecker makes it easy to understand the state of your projects' npm dependencies, so that you can
-                  more efficiently make version updates, discover potential issues and maintain your software.
+                  {/*DepChecker makes it easy to understand the state of your projects' npm dependencies, so that you can*/}
+                  {/*more efficiently make version updates, discover potential issues and maintain your software.*/}
+                  Let’s be honest, software has a lot of pieces... Depchecker makes it easy to monitor every single npm
+                  dependency that your projects rely on.
                </h2>
                <Link id={`ctaTopLanding`} to={ROUTES.BASIC_INDEX}>
                   <Button
@@ -98,15 +103,15 @@ export default function Landing() {
                <h5
                   style={{
                      paddingLeft: 5,
-                     color: styles.blackOp(0.4),
-                     maxWidth: 300
+                     maxWidth: 300,
+                     opacity: 0.6
                   }}>
                   No need to provide email, payment or spare kidney for for basic version.
                </h5>
             </div>
             <div style={{ flex: 1.3, padding: 10 }}>
                <BrowserPreview styles={styles} isMain>
-                  <img src={ExampleImage} width="100%" />
+                  <img src={"/depchecker-preview.png"} width="100%" />
                </BrowserPreview>
             </div>
          </div>
@@ -120,7 +125,7 @@ export default function Landing() {
                style={{
                   height: 8,
                   width: 8,
-                  backgroundColor: styles.blackOp(0.06),
+                  backgroundColor: styles.whiteOp(0.2),
                   borderRadius: 10,
                   margin: isLeft ? '0px 3px 0px 6px' : '0px 3px'
                }}
@@ -134,8 +139,8 @@ export default function Landing() {
                borderRadius: 3,
                margin: 'auto',
                display: 'block',
-               boxShadow: `0 20px 40px 0 ${styles.blackOp(0.3)}`,
-               border: '2px solid rgba(0,0,0,0.05)',
+               boxShadow: `0 20px 40px 0 ${styles.whiteOp(0.2)}`,
+               border: `2px solid ${COLORS.whiteOp(0.1)}`,
                minWidth: isMain ? 300 : null,
                maxWidth: isMain ? null : null,
                width: '100%'
@@ -145,7 +150,7 @@ export default function Landing() {
                   width: '100%',
                   borderTopRightRadius: 3,
                   borderTopLeftRadius: 3,
-                  backgroundColor: '#f0f2f5',
+                  // backgroundColor: '#f0f2f5',
                   height: 20,
                   display: 'flex',
                   alignItems: 'center'
@@ -184,12 +189,25 @@ export default function Landing() {
                   <h3
                      style={{
                         marginBottom: 10,
-                        color: styles.blackOp(0.6),
+                        // color: styles.blackOp(0.6),
                         lineHeight: 1.2
                      }}>
-                     <strong style={{ color: styles.blackOp(0.8) }}>{title} </strong>
+                     <strong
+                        style={
+                           {
+                              // color: styles.blackOp(0.8)
+                           }
+                        }>
+                        {title}{' '}
+                     </strong>
                   </h3>
-                  <div style={{ marginBottom: 0, color: styles.blackOp(0.6) }}>{desc}</div>
+                  <div
+                     style={{
+                        marginBottom: 0
+                        // color: styles.blackOp(0.6)
+                     }}>
+                     {desc}
+                  </div>
                </div>
             </div>
          );
@@ -342,7 +360,7 @@ export default function Landing() {
                <Icon
                   style={{
                      fontSize: 24,
-                     color: styles.blueOp(0.6),
+                     // color: styles.blueOp(0.6),
                      margin: '0px 20px 0px 0px'
                   }}
                   type={feature.comingSoon ? 'plus-square' : 'check-square'}
@@ -390,8 +408,8 @@ export default function Landing() {
                      textAlign: 'center',
                      width: '100%',
                      margin: '50px 0px 10px 0px',
-                     fontWeight: 'bold',
-                     color: styles.blue
+                     fontWeight: 'bold'
+                     // color: styles.blue
                   }}>
                   These features are coming soon!
                </h2>
@@ -483,7 +501,7 @@ export default function Landing() {
                   <Icon
                      style={{
                         fontSize: 60,
-                        color: styles.blue,
+                        // color: styles.blue,
                         margin: '2px 5px'
                      }}
                      type={icon}
@@ -498,13 +516,19 @@ export default function Landing() {
                   <h2
                      style={{
                         marginBottom: 5,
-                        color: styles.blackOp(0.95),
+                        // color: styles.blackOp(0.95),
                         fontSize: 20,
                         fontWeight: '900'
                      }}>
                      {step}
                   </h2>
-                  <h5 style={{ marginBottom: 0, color: styles.blackOp(0.6) }}>{text}</h5>
+                  <h5
+                     style={{
+                        marginBottom: 0
+                        // color: styles.blackOp(0.6)
+                     }}>
+                     {text}
+                  </h5>
                </div>
             </div>
          );
@@ -529,11 +553,19 @@ export default function Landing() {
                   marginTop: 30
                }}>
                {renderSection('Upload', 'a package.json file', 'cloud-upload')}
-               <h2 style={{ color: styles.blackOp(0.4), margin: '20px 0px' }}>
+               <h2
+                  style={{
+                     // color: styles.blackOp(0.4),
+                     margin: '20px 0px'
+                  }}>
                   {isWide ? <span>&rarr;</span> : <span>&darr;</span>}
                </h2>
                {renderSection('Relax', 'while DepChecker does its thing', 'coffee')}
-               <h2 style={{ color: styles.blackOp(0.4), margin: '20px 0px' }}>
+               <h2
+                  style={{
+                     // color: styles.blackOp(0.4),
+                     margin: '20px 0px'
+                  }}>
                   {isWide ? <span>&rarr;</span> : <span>&darr;</span>}
                </h2>
                {renderSection('Improve', 'your project based on the analysis results', 'rise')}
@@ -558,8 +590,8 @@ export default function Landing() {
                <h3
                   style={{
                      marginBottom: 20,
-                     textAlign: 'center',
-                     color: styles.blackOp(0.9)
+                     textAlign: 'center'
+                     // color: styles.blackOp(0.9)
                   }}>
                   DepChecker analyzes <code>package.json</code> files to generate insightful and exportable dependency
                   reports. It helps software consultants with ongoing maintenance engagements deliver more and higher
@@ -586,8 +618,8 @@ export default function Landing() {
                <h2
                   style={{
                      marginBottom: 50,
-                     textAlign: 'center',
-                     color: styles.blackOp(0.7)
+                     textAlign: 'center'
+                     // color: styles.blackOp(0.7)
                   }}>
                   DepChecker analyzes important aspects of your projects' npm dependencies and summarizes the results.
                </h2>
@@ -669,8 +701,8 @@ export default function Landing() {
                <h3
                   style={{
                      marginBottom: 20,
-                     textAlign: 'center',
-                     color: styles.blackOp(0.9)
+                     textAlign: 'center'
+                     // color: styles.blackOp(0.9)
                   }}>
                   This is the absolute minimal version of a product being built by me,{' '}
                   <a href="https://ryanjyost.com" target={'_blank'}>
@@ -681,8 +713,8 @@ export default function Landing() {
                <h3
                   style={{
                      marginBottom: 20,
-                     textAlign: 'center',
-                     color: styles.blackOp(0.9)
+                     textAlign: 'center'
+                     // color: styles.blackOp(0.9)
                   }}>
                   <a href={'mailto:ryanjyost@gmail.com'}>Shoot me an email </a> or{' '}
                   <a href={'https://github.com/ryanjyost/depchecker/issues/new'}>open a GitHub issue</a> with your
@@ -702,7 +734,7 @@ export default function Landing() {
                fontWeight: '900',
                display: 'inline-block',
                padding: '0px 30px 5px 30px',
-               color: styles.blackOp(1),
+               // color: styles.blackOp(1),
                fontSize: 26,
                marginBottom: 10
             }}>
@@ -719,8 +751,8 @@ export default function Landing() {
                fontWeight: 'bold',
                display: 'inline-block',
                padding: '0px 30px 5px 30px',
-               marginBottom: 40,
-               color: 'rgba(0,0,0,0.95)'
+               marginBottom: 40
+               // color: 'rgba(0,0,0,0.95)'
             }}>
             {children}
          </h3>
@@ -734,7 +766,7 @@ export default function Landing() {
                display: 'flex',
                alignItems: 'center',
                flexDirection: 'column',
-               backgroundColor: styles.blueOp(0.05),
+               // backgroundColor: styles.whiteOp(0.05),
                border: `1px solid ${styles.blue}`,
                padding: '50px 20px',
                borderRadius: 5,
@@ -754,16 +786,16 @@ export default function Landing() {
    };
 
    return (
-      <div>
+      <Root>
          <div
             style={{
                maxWidth: 1100,
                minHeight: '100vh',
                width: '100%',
-               margin: 'auto'
+               margin: 'auto',
             }}>
             <BasicHeader />
-            <div style={{ padding: '50px 20px 50px 20px' }}>
+            <div style={{ padding: '150px 20px 50px 20px' }}>
                <First styles={styles} />
             </div>{' '}
             <div style={{ padding: '100px 20px 100px 20px' }}>
@@ -794,6 +826,6 @@ export default function Landing() {
                <Last styles={styles} />
             </div>
          </div>
-      </div>
+      </Root>
    );
 }

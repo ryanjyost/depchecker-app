@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useTable } from 'react-table';
+import { COLORS } from 'Styles';
 
 const StyledTable = styled.table`
    border-spacing: 0;
    min-width: 900px;
 
    tr {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      background-color: #fff;
+      border-bottom: 1px solid ${COLORS.whiteOp(0.2)};
    }
 
    th,
@@ -19,7 +19,6 @@ const StyledTable = styled.table`
    }
 
    th {
-      background-color: rgba(0, 0, 0, 0.03);
       border-radius: 3px 3px 0px 0px;
    }
 `;
