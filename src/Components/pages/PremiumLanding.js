@@ -123,7 +123,10 @@ const MailChimp = ({ handleChange, email }) => {
                         </Button>
                      </InputButtonContainer>
                      <div>
-                        <Text>Not sure?</Text>&nbsp;<a href="https://github.com/ryanjyost/depchecker/issues/10">Check out the planned features for DepChecker Pro on GitHub</a>
+                        <Text>Not sure?</Text>&nbsp;
+                        <a href="https://github.com/ryanjyost/depchecker/issues/10">
+                           Check out the planned features for DepChecker Pro on GitHub
+                        </a>
                      </div>
                   </Hero>
                );
@@ -132,9 +135,9 @@ const MailChimp = ({ handleChange, email }) => {
             return (
                <>
                   {!status && renderCTA()}
-                  {/*{status === 'sending' && <div style={{ color: 'blue' }}>sending...</div>}*/}
-                  {/*{status === 'error' && <div style={{ color: 'red' }}> Something went wrong </div>}*/}
-                  {/*{status === 'success' && <div style={{ color: 'green' }}>Subscribed !</div>}*/}
+                  {status === 'sending' && <Title level={3} style={{ color: 'blue' }}>Sending...</Title>}
+                  {status === 'error' && <Title level={3} style={{ color: 'red' }}> Something went wrong - {message} </Title>}
+                  {status === 'success' && <Title level={3} style={{ color: 'green' }}>Subscribed !</Title>}
                </>
             );
          }}
