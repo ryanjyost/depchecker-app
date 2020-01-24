@@ -7,7 +7,6 @@ import { RouteMap } from 'Routes';
 const { Footer } = Layout;
 
 const Root = styled(Footer)`
-   background-color: ${COLORS.black};
    display: flex;
    align-items: center;
    justify-content: flex-end;

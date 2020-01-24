@@ -166,8 +166,8 @@ const dark = {
    '@primary-8': '@blue-8',
    '@primary-9': '@blue-9',
    '@primary-10': '@blue-10',
-   '@body-background': '@black',
-   '@component-background': '#141414',
+   '@body-background': 'rgba(0,0,0,0.9)',
+   '@component-background': '@body-background',
    '@font-family':
       "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica,\n  'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif",
    '@code-family': "'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace",

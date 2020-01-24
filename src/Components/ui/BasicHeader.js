@@ -8,7 +8,7 @@ const { Header } = Layout;
 const { Title } = Typography;
 
 const Root = styled(Header)`
-   background-color: ${COLORS.black};
+   // background-color: ${COLORS.blackOp(0.95)};
    display: flex;
    align-items: center;
    justify-content: space-between;
