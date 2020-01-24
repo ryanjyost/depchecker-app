@@ -96,7 +96,7 @@ const MailChimp = ({ handleChange, email }) => {
                   <Hero>
                      <Title level={1}>Automated npm dependency monitoring that saves you time and headaches</Title>
                      <Title level={4}>
-                        The goal with <strong>DepChecker Pro</strong> is to make it continuously discover actionable
+                        The goal with <strong>DepChecker Pro</strong> is to continuously discover actionable
                         insights hidden in your npm dependencies and make sure that you're aware of potential issues
                         before they cost your team time and money.
                      </Title>
