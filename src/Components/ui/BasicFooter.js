@@ -37,6 +37,7 @@ export default function BasicHeader() {
       <Root>
          <LinkContainer>
             <Text>Copyright © 2020 depchecker.com</Text>
+            <FooterLink href="https://depchecker.com/blog">Blog</FooterLink>
             <FooterLink href="mailto:ryanjyost@gmail.com?subject=DepChecker">Contact</FooterLink>
             <FooterLink href="https://github.com/ryanjyost/depchecker">GitHub</FooterLink>
          </LinkContainer>
