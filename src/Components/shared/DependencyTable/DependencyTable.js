@@ -73,7 +73,15 @@ export default function DependencyTable({ projectName, dependencies }) {
             }
          },
          { Header: 'Project', accessor: row => row.versions.project || '?' },
-         { Header: 'LTS', accessor: row => row.versions.latest || '?' },
+         {
+            Header: 'LTS',
+            accessor: row => row.versions.latest || '?',
+            Cell: data => {
+               const { deprecated } = data.row.original;
+               if (!deprecated) return data.cell.value;
+               return <SeverityTag color={'red'}>{data.cell.value} (deprecated)</SeverityTag>;
+            }
+         },
          {
             Header: 'Versions Behind',
             accessor: 'versionsBehind.text',
@@ -138,7 +146,8 @@ export default function DependencyTable({ projectName, dependencies }) {
                ) : (
                   <div>{data.cell.value}</div>
                )
-         }
+         },
+         { Header: 'Size (unpacked)', accessor: row => row.size.unpacked.formatted || '?' }
       ],
       []
    );

@@ -9,6 +9,7 @@
       "axios": "^0.18.0",
       "bootstrap": "^3.3.7",
       "dotenv": "^6.2.0",
+      "fake-test-dependency": "1.0.0",
       "numeral": "^2.0.6",
       "moment": "^2.23.0",
       "oauth": "^0.9.15",
@@ -21,6 +22,7 @@
       "react-simple-storage": "^1.0.2",
       "react-table": "^6.8.6",
       "redux": "^3.6.0",
+      "request": "2.88.2",
       "underscore": "^1.9.1"
    },
    "scripts": {
