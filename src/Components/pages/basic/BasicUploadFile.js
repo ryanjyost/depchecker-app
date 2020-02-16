@@ -41,7 +41,7 @@ function BasicUploadFile({ packageJSON, analyzePackageJSON, readPackageJSON, cle
             Upload a <code>package.json</code> file
          </Title>
          <FileDropzone onDrop={onDrop} hasFile={hasFile} />
-         <SubmitLink to={RouteMap.BASIC_RESULTS}>
+         <SubmitLink to={RouteMap.RESULTS}>
             <Button block type={'primary'} onClick={handleSubmit} disabled={!hasFile}>
                Click to Analyze Dependencies
             </Button>

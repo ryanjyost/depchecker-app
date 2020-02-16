@@ -9,6 +9,7 @@ const Container = styled.div`
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   height: 100vh;
 `;
 
 /**
@@ -22,7 +23,7 @@ export default function NotFound() {
             title="404"
             subTitle="Sorry, the page you visited does not exist."
             extra={
-               <Link to={RouteMap.ROOT}>
+               <Link to={RouteMap.INDEX}>
                   <Button type="primary">Back Home</Button>
                </Link>
             }

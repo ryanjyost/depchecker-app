@@ -239,7 +239,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
          <ReadyContainer>
             <Icon type="experiment" />
             <Title level={4}>Dependencies are ready to analyze {text}</Title>
-            <Link to={RouteMap.BASIC_RESULTS}>
+            <Link to={RouteMap.RESULTS}>
                <Button block type={'primary'} onClick={handleSubmit}>
                   Analyze
                </Button>
@@ -254,7 +254,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
          <PasteCodeContainer>
             <Title level={3}>
                {hasFile ? (
-                  <Link to={RouteMap.BASIC_RESULTS}>
+                  <Link to={RouteMap.RESULTS}>
                      <Button block type={'primary'} size="large" onClick={handleSubmit}>
                         Analyze
                      </Button>
@@ -318,7 +318,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
                            <Button type="default" shape="round" block onClick={() => togglePastingCode(true)}>
                               Click here to paste the code directly
                            </Button>
-                           <ExampleLink to={RouteMap.BASIC_RESULTS} onClick={startExample}>
+                           <ExampleLink to={RouteMap.RESULTS} onClick={startExample}>
                               Try an example
                            </ExampleLink>
                         </FileDropzone>

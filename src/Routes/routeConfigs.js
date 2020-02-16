@@ -18,6 +18,7 @@ const { Title } = Typography;
  */
 const ROUTES = [
    { key: 'INDEX', path: '/', title: 'Analysis', component: FullAnalysisOptions, exact: true },
+   { key: 'RESULTS', path: '/analysis', title: 'Results', component: BasicResults, exact: true },
    { key: 'LANDING_PREMIUM', path: '/premium', title: 'Premium', component: PremiumLanding, exact: true },
    {
       key: 'BASIC_ROOT',

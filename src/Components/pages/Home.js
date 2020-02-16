@@ -58,7 +58,7 @@ function Home({ analyzePackageJSON }) {
                Easily upload a <code>package.json</code> file and generate a dependency report. No GitHub authorization
                required.
             </UserFlowOption>
-            <UserFlowOption title="Try an example" link={RouteMap.BASIC_RESULTS} onClick={startExample}>
+            <UserFlowOption title="Try an example" link={RouteMap.RESULTS} onClick={startExample}>
                Choose this if you're not quite sure what DepChecker does to see it analyze an example project's
                dependencies.
             </UserFlowOption>

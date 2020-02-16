@@ -1,20 +1,36 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState, useRef } from 'react';
+import { CSVLink } from 'react-csv';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import moment from 'moment';
 import numeral from 'numeral';
-import { Icon, Tooltip, Tag } from 'antd';
+import { Icon, Tooltip, Button } from 'antd';
 import { Table } from 'Components/shared';
 import { COLORS, SEVERITY_COLORS } from 'Styles';
-import { NameContainer, NameLink, LinksContainer, LinkIcon, SeverityTag, DevTag } from './dependencyTable.styled';
+import {
+   Root,
+   NameContainer,
+   NameLink,
+   LinksContainer,
+   LinkIcon,
+   SeverityTag,
+   DevTag,
+   DownloadBtnContainer
+} from './dependencyTable.styled';
+import { generateCSVData, csvHeaders } from './helpers';
 
 TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo('en-US');
 
-export default function DependencyTable({ dependencies }) {
-   console.log('DEPS', dependencies);
+export default function DependencyTable({ projectName, dependencies }) {
+   console.log(dependencies);
+   const [csvData, updateCSVData] = useState([]);
+
+   useEffect(() => {
+      updateCSVData(generateCSVData(dependencies));
+   }, [dependencies]);
+
    const columns = useMemo(
       () => [
          {
@@ -136,9 +152,24 @@ export default function DependencyTable({ dependencies }) {
       [dependencies]
    );
 
-   return <Table columns={columns} data={data} />;
+   return (
+      <Root>
+         <DownloadBtnContainer>
+            {csvData && csvData.length ? (
+               <CSVLink
+                  data={csvData}
+                  filename={`${projectName.replace(/\s/g, '')}_depchecker_results.csv`}
+                  headers={csvHeaders}>
+                  <Button shape="round">Download to CSV</Button>
+               </CSVLink>
+            ) : null}
+         </DownloadBtnContainer>
+         <Table columns={columns} data={data} />
+      </Root>
+   );
 }
 
 DependencyTable.propTypes = {
-   dependencies: PropTypes.array
+   dependencies: PropTypes.array,
+   projectName: PropTypes.string
 };
