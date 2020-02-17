@@ -36,7 +36,7 @@ function configureStore() {
    });
 
    // set top-level pieces of the store to persist - can get more granular in each reducer
-   const persistedReducer = persist('root', ['user'], combinedReducers);
+   const persistedReducer = persist('root', [], combinedReducers);
 
    const sagaMiddleware = createSagaMiddleware();
    middleware.push(sagaMiddleware);

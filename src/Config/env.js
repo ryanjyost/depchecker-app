@@ -2,7 +2,8 @@
 These are non-secret environment configs
  */
 
-const common = {};
+const common = {
+};
 
 const LOCAL = {
    envDisplay: 'Local',

@@ -8,7 +8,10 @@ import {
    BasicResults,
    BasicUploadFile,
    BasicPasteCode,
-   FullAnalysisOptions
+   FullAnalysisOptions,
+   Login,
+   AuthRedirect,
+   SelectRepos
 } from 'Components/pages';
 import { RootRouteWithSubRoutes } from 'Components/routes';
 const { Title } = Typography;
@@ -19,6 +22,9 @@ const { Title } = Typography;
 const ROUTES = [
    { key: 'INDEX', path: '/', title: 'Analysis', component: FullAnalysisOptions, exact: true },
    { key: 'RESULTS', path: '/analysis', title: 'Results', component: BasicResults, exact: true },
+   { key: 'LOGIN', path: '/login', title: 'Log In', component: Login, exact: true },
+   { key: 'AUTH_REDIRECT', path: '/auth', title: 'Auth', component: AuthRedirect },
+   { key: 'SELECT_REPOS', path: '/select_repos', title: 'Select Repos', component: SelectRepos, exact: true },
    { key: 'LANDING_PREMIUM', path: '/premium', title: 'Premium', component: PremiumLanding, exact: true },
    {
       key: 'BASIC_ROOT',

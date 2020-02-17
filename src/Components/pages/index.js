@@ -9,6 +9,9 @@ import BasicRepoUrl from './basic/BasicRepoUrl';
 import BasicResults from './basic/BasicResults';
 import BasicUploadFile from './basic/BasicUploadFile';
 import BasicPasteCode from './basic/BasicPasteCode';
+import Login from './Login';
+import AuthRedirect from './AuthRedirect';
+import SelectRepos from './SelectRepos';
 
 export {
    NotFound,
@@ -21,5 +24,8 @@ export {
    BasicResults,
    BasicUploadFile,
    BasicPasteCode,
-   PremiumLanding
+   PremiumLanding,
+   Login,
+   AuthRedirect,
+   SelectRepos
 };

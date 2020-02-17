@@ -10,14 +10,16 @@ const create = () => {
       baseURL: $ApiBaseUrl
    });
 
-   /**
-    * Get something
-    * @returns {Promise} The response from the request
-    */
-   const readPackageJSON = (formData) => api.post(`/read_package_json`, formData);
+   const readPackageJSON = formData => api.post(`/read_package_json`, formData);
+
+   const login = code => api.post(`/auth`, { code });
+
+   const setupNewInstallation = installationId => api.post(`/installations/setup`, { installationId });
 
    return {
-      readPackageJSON
+      readPackageJSON,
+      login,
+      setupNewInstallation
    };
 };
 
