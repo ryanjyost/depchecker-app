@@ -49,6 +49,7 @@ const ListItem = styled(List.Item)`
 
 const RepoName = styled(Text)`
    font-size: 18px;
+   margin-left: 1rem;
 `;
 
 const NextButton = styled(Button)`
@@ -60,23 +61,31 @@ const SearchInput = styled(Input)`
    margin-bottom: 10px;
 `;
 
-function SelectRepos({ repos }) {
-   console.log(repos);
+function SelectRepos({ repos, updateInstallationRepos, installation }) {
    const [selectedRepos, updateSelectedRepos] = useState([]);
    const [search, updateSearch] = useState('');
 
-   function toggleRepo(repoName) {
-      const isSelected = selectedRepos.includes(repoName);
-      if (isSelected) {
+   function toggleRepo(repoName, remove) {
+      console.log('TOGGLE', repoName, remove);
+      if (remove) {
          updateSelectedRepos(selectedRepos.filter(r => r !== repoName));
       } else {
-         updateSelectedRepos([...selectedRepos, ...[repoName]]);
+         const copy = [...selectedRepos];
+         copy.push(repoName);
+         updateSelectedRepos(copy);
       }
    }
 
+   console.log(selectedRepos);
+
    const renderNextBtn = () => {
       return (
-         <NextButton block size="large" type={'primary'} disabled={!selectedRepos.length}>
+         <NextButton
+            block
+            size="large"
+            type={'primary'}
+            disabled={!selectedRepos.length}
+            onClick={() => updateInstallationRepos(installation.githubId, selectedRepos)}>
             {!selectedRepos.length
                ? 'Select repos to analyze'
                : `Analyze ${selectedRepos.length} repos with DepChecker`}
@@ -100,11 +109,13 @@ function SelectRepos({ repos }) {
                {repos
                   .filter(r => (search ? r.name.toLowerCase().includes(search.toLowerCase()) : true))
                   .map(repo => {
+                     const checked = selectedRepos.includes(repo.name);
                      return (
-                        <ListItem key={repo.id} onClick={() => toggleRepo(repo.name)}>
-                           <Checkbox checked={selectedRepos.includes(repo.name)}>
+                        <ListItem key={repo.id} onClick={() => toggleRepo(repo.name, checked)}>
+                           <div>
+                              <Checkbox checked={checked} onChange={() => false} />
                               <RepoName>{repo.name}</RepoName>
-                           </Checkbox>
+                           </div>
                            {repo.private && <Tag color="green">private</Tag>}
                         </ListItem>
                      );
@@ -118,15 +129,16 @@ function SelectRepos({ repos }) {
 
 const mapStateToProps = state => {
    return {
-      repos: state.user.repos
+      repos: state.user.repos,
+      installation: state.user.installation
    };
 };
 
 const mapDispatchToProps = dispatch => {
    return {
       login: code => dispatch(UserActions.login.request(code)),
-      setupNewInstallation: (code, installationId) =>
-         dispatch(UserActions.setupNewInstallation.request(code, installationId))
+      updateInstallationRepos: (installationId, repos) =>
+         dispatch(UserActions.updateInstallationRepos.request(installationId, repos))
    };
 };
 

@@ -21,7 +21,19 @@ function* setupNewInstallation({ api, action }, { payload }) {
    }
 }
 
+function* updateInstallationRepos({ api, action }, { payload }) {
+   const { installationId, repos } = payload;
+   try {
+      const response = yield call(api.updateInstallationRepos, installationId, repos);
+      const { installation } = response.data.response;
+      yield put(action.success(installation));
+   } catch (error) {
+      yield put(action.failure(error));
+   }
+}
+
 export default {
    login,
-   setupNewInstallation
+   setupNewInstallation,
+   updateInstallationRepos
 };

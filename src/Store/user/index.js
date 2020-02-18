@@ -128,14 +128,58 @@ function setupNewInstallationReducer(state = InitialState, action) {
    }
 }
 
+const updateInstallationRepos = createSagaActions(
+   'UPDATE_INSTALLATION_REPOS',
+   {
+      request: (installationId, repos) => ({ installationId, repos }),
+      success: installation => ({
+         installation
+      }),
+      failure: error => ({ error })
+   },
+   'user'
+);
+
+function updateInstallationReposReducer(state = InitialState, action) {
+   const { payload } = action;
+   switch (action.type) {
+      case updateInstallationRepos.types.request:
+         return update(state, {
+            fetching: { $set: true },
+            error: { $set: null }
+         });
+
+      case updateInstallationRepos.types.success:
+         return update(state, {
+            fetching: { $set: false },
+            installation: { $set: payload.installation }
+         });
+
+      case updateInstallationRepos.types.failure:
+         return update(state, {
+            fetching: { $set: false },
+            error: { $set: `Error occurred` }
+         });
+      default:
+         return state;
+   }
+}
+
 export const actions = {
    login,
    logout,
-   setupNewInstallation
+   setupNewInstallation,
+   updateInstallationRepos
 };
 
 export default persist(
    'user',
    ['installation', 'repos'],
-   reduceReducers(InitialState, loginReducer, logoutReducer, setupNewInstallationReducer)
+   reduceReducers(
+      InitialState,
+      loginReducer,
+      logoutReducer,
+      setupNewInstallationReducer,
+      updateInstallationReposReducer
+   )
 );

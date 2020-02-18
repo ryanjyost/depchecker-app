@@ -14,6 +14,7 @@ export default function*() {
    yield all([
       generateWatcher(UserActions.login, UserSagas.login, DepChecker),
       generateWatcher(UserActions.setupNewInstallation, UserSagas.setupNewInstallation, DepChecker),
+      generateWatcher(UserActions.updateInstallationRepos, UserSagas.updateInstallationRepos, DepChecker),
       generateWatcher(BasicActions.analyzeRepoUrl, BasicSagas.analyzeRepoUrl, Socket),
       generateWatcher(BasicActions.analyzePackageJSON, BasicSagas.analyzePackageJSON, Socket),
       generateWatcher(BasicActions.readPackageJSON, BasicSagas.readPackageJSON, DepChecker)

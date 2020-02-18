@@ -16,10 +16,14 @@ const create = () => {
 
    const setupNewInstallation = installationId => api.post(`/installations/setup`, { installationId });
 
+   const updateInstallationRepos = (installationId, repos) =>
+      api.put(`/installations/${installationId}/repos`, { repos });
+
    return {
       readPackageJSON,
       login,
-      setupNewInstallation
+      setupNewInstallation,
+      updateInstallationRepos
    };
 };
 
