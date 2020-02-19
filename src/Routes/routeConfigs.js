@@ -11,7 +11,8 @@ import {
    FullAnalysisOptions,
    Login,
    AuthRedirect,
-   SelectRepos
+   SelectRepos,
+   SetupComplete
 } from 'Components/pages';
 import { RootRouteWithSubRoutes } from 'Components/routes';
 const { Title } = Typography;
@@ -24,7 +25,8 @@ const ROUTES = [
    { key: 'RESULTS', path: '/analysis', title: 'Results', component: BasicResults, exact: true },
    { key: 'LOGIN', path: '/login', title: 'Log In', component: Login, exact: true },
    { key: 'AUTH_REDIRECT', path: '/auth', title: 'Auth', component: AuthRedirect },
-   { key: 'SELECT_REPOS', path: '/select_repos', title: 'Select Repos', component: SelectRepos, exact: true },
+   { key: 'SETUP_REPOS', path: '/setup_repos', title: 'Setup Repos', component: SelectRepos, exact: true },
+   { key: 'SETUP_COMPLETE', path: '/setup_complete', title: 'Setup Complete', component: SetupComplete, exact: true },
    { key: 'LANDING_PREMIUM', path: '/premium', title: 'Premium', component: PremiumLanding, exact: true },
    {
       key: 'BASIC_ROOT',

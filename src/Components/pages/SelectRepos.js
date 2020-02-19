@@ -3,9 +3,10 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { Layout, Typography, List, Checkbox, Button, Input, Tag } from 'antd';
+import { Layout, Typography, List, Checkbox, Button, Input, Tag, Icon } from 'antd';
 import { BasicActions, UserActions } from 'Store';
 import { COLORS } from 'Styles';
+import { RouteMap } from 'Routes';
 const { Title, Text } = Typography;
 
 const Root = styled.div`
@@ -65,8 +66,15 @@ function SelectRepos({ repos, updateInstallationRepos, installation }) {
    const [selectedRepos, updateSelectedRepos] = useState([]);
    const [search, updateSearch] = useState('');
 
+   if (!installation) {
+      return <Redirect to={RouteMap.INDEX} />;
+   }
+
+   if (installation.repos.length) {
+      return <Redirect to={RouteMap.SETUP_COMPLETE} />;
+   }
+
    function toggleRepo(repoName, remove) {
-      console.log('TOGGLE', repoName, remove);
       if (remove) {
          updateSelectedRepos(selectedRepos.filter(r => r !== repoName));
       } else {
@@ -75,8 +83,6 @@ function SelectRepos({ repos, updateInstallationRepos, installation }) {
          updateSelectedRepos(copy);
       }
    }
-
-   console.log(selectedRepos);
 
    const renderNextBtn = () => {
       return (
@@ -96,10 +102,14 @@ function SelectRepos({ repos, updateInstallationRepos, installation }) {
    return (
       <Root>
          <Content>
-            <Title level={2}>Select the repos you want DepChecker to analyze</Title>
+            <Title level={2}>
+               <Icon type="check-circle" style={{ color: COLORS.green, marginRight: 5 }} /> DepChecker installed
+               successfully
+            </Title>
+            <Text>Now select the repos you want DepChecker to monitor and analyze</Text>
             {renderNextBtn()}
             <SearchInput
-               placeholder="Search for repos..."
+               placeholder="Filter your repos..."
                size="large"
                value={search}
                onChange={e => updateSearch(e.target.value)}

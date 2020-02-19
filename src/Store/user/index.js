@@ -174,7 +174,7 @@ export const actions = {
 
 export default persist(
    'user',
-   ['installation', 'repos'],
+   [],
    reduceReducers(
       InitialState,
       loginReducer,

@@ -12,6 +12,7 @@ import BasicPasteCode from './basic/BasicPasteCode';
 import Login from './Login';
 import AuthRedirect from './AuthRedirect';
 import SelectRepos from './SelectRepos';
+import SetupComplete from './SetupComplete';
 
 export {
    NotFound,
@@ -27,5 +28,6 @@ export {
    PremiumLanding,
    Login,
    AuthRedirect,
-   SelectRepos
+   SelectRepos,
+   SetupComplete
 };

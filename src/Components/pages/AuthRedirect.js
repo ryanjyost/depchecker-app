@@ -38,7 +38,7 @@ function AuthRedirect({ login, setupNewInstallation, installation }) {
 
    if (installation) {
       if (!installation.repos.length) {
-         return <Redirect to={RouteMap.SELECT_REPOS} />;
+         return <Redirect to={RouteMap.SETUP_REPOS} />;
       }
    }
 

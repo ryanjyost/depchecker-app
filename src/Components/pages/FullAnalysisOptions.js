@@ -148,9 +148,9 @@ const RepoAnalysisInfo = styled.div`
 
 const InfoText = styled.div`
    margin-bottom: 10px;
-   line-height: 2;
-   font-size: 15px;
-   color: ${COLORS.whiteOp(0.9)};
+   line-height: 1.7;
+   font-size: 18px;
+   color: ${COLORS.whiteOp(0.7)};
    font-weight: 500;
    strong {
       font-weight: 700;
@@ -285,13 +285,20 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
             <div>
                <Title level={2}>Maintain JavaScript projects?</Title>
                <InfoText>
-                  DepChecker is a free tool that makes it easy to analyze and monitor your npm dependencies. So you can
+                  DepChecker makes it easy to analyze and monitor your npm dependencies, so you can
                   discover potential issues early on and more confidently maintain your code.
                </InfoText>
             </div>
-            <Link to={RouteMap.LANDING_PREMIUM || '/'}>
-               <Button shape="round">Learn about <strong>&nbsp;DepChecker Pro</strong></Button>
-            </Link>
+            <Button
+               shape="round"
+               type="primary"
+               size="large"
+               block
+               className={'pulsingButton'}
+               href={`https://github.com/apps/${process.env.REACT_APP_GH_APP_NAME}/installations/new`}>
+               <Icon type="github" />
+               Install the GitHub app
+            </Button>
          </RepoAnalysisInfo>
       );
    };
