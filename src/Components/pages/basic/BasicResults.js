@@ -48,7 +48,6 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
       } = match;
       const repoUrl = `https://github.com/${owner}/${repo}`;
 
-      console.log('pakage', packageJSON);
       if (packageJSON && packageJSON.name && packageJSON.name === repo) {
          return null;
       }

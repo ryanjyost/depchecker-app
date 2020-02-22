@@ -72,7 +72,7 @@ export default function DependencyTable({ projectName, dependencies }) {
                );
             }
          },
-         { Header: 'Project', accessor: row => row.versions.project || '?' },
+         { Header: 'Project', accessor: row => row.project.rawProjectVersion || '?' },
          {
             Header: 'LTS',
             accessor: row => row.versions.latest || '?',
@@ -84,7 +84,7 @@ export default function DependencyTable({ projectName, dependencies }) {
          },
          {
             Header: 'Versions Behind',
-            accessor: 'versionsBehind.text',
+            accessor: 'project.versionsBehind.text',
             Cell: data => (
                <SeverityTag color={SEVERITY_COLORS[data.row.original.levels['versionsBehind']]}>
                   {data.cell.value || '?'}
