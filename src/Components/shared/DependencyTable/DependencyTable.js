@@ -14,7 +14,6 @@ TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo('en-US');
 
 export default function DependencyTable({ dependencies }) {
-   console.log('DEPS', dependencies);
    const columns = useMemo(
       () => [
          {

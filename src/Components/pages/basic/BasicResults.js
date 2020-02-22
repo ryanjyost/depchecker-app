@@ -41,19 +41,16 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
       return devDeps.length + deps.length;
    }, [packageJSON]);
 
+   const {
+      params: { owner, repo }
+   } = match;
+
+   const analysisExists = packageJSON && packageJSON.name && packageJSON.name === repo;
+
    useEffect(() => {
-      const {
-         params: { owner, repo }
-      } = match;
-      const repoUrl = `https://github.com/${owner}/${repo}`;
-
-      console.log('pakage', packageJSON);
-      if (packageJSON && packageJSON.name && packageJSON.name === repo) {
-         return null;
-      }
-
-      if (owner && repo) {
-         analyzeRepoUrl(`https://github.com/${owner}/${repo}`);
+      if (!analysisExists && owner && repo) {
+         const repoUrl = `https://github.com/${owner}/${repo}`;
+         analyzeRepoUrl(repoUrl);
       }
    }, []);
 
@@ -69,18 +66,24 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
             key: MESSAGE_KEY,
             duration: dependencies.length >= numDepsInRepo ? 0.25 : 0
          });
-      }
-   }, [dependencies]);
-
-   // show final success message when all done
-   useEffect(() => {
-      if (summary) {
+      } else if (summary && analysisExists) {
          message.success({
             content: 'Dependency analysis completed!',
             duration: 2
          });
       }
-   }, [summary]);
+   }, [dependencies, summary]);
+
+   // show final success message when all done
+   // useEffect(() => {
+   //    const analysisExists = packageJSON && packageJSON.name && packageJSON.name === repo;
+   //    if (summary) {
+   //       message.success({
+   //          content: 'Dependency analysis completed!',
+   //          duration: 2
+   //       });
+   //    }
+   // }, [summary]);
 
    return (
       <Root>
