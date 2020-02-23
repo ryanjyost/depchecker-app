@@ -90,7 +90,9 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
          <BasicHeader />
          <MainContainer>
             <SectionTitle level={3}>
-               <strong>{packageJSON ? `${packageJSON.name}` : null}</strong>
+               <strong>
+                  {repo ? `${owner || ''}/${repo || 'Unknown'}` : packageJSON ? `${packageJSON.name}` : null}
+               </strong>
             </SectionTitle>
             <AnalysisSummary data={summary} />
             <DependencyTable dependencies={dependencies} />
