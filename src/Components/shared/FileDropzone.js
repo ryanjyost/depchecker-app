@@ -104,7 +104,7 @@ export default function FileDropzone({ onDrop, hasFile, children }) {
                      </div>
                      {isDragActive || hasFile ? null : (
                         <Button
-                           id={'browseFiles'}
+                           id="basic_browseFiles"
                            type="primary"
                            size="small"
                            onClick={() => open()}

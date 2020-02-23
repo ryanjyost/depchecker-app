@@ -239,7 +239,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
          <ReadyContainer>
             <Icon type="experiment" />
             <Title level={4}>Dependencies are ready to analyze {text}</Title>
-            <Link to={RouteMap.RESULTS}>
+            <Link id="basic_analyzeButton" to={RouteMap.RESULTS}>
                <Button block type={'primary'} onClick={handleSubmit}>
                   Analyze
                </Button>
@@ -254,7 +254,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
          <PasteCodeContainer>
             <Title level={3}>
                {hasFile ? (
-                  <Link to={RouteMap.RESULTS}>
+                  <Link id="pasteCode_analyzeButton" to={RouteMap.RESULTS}>
                      <Button block type={'primary'} size="large" onClick={handleSubmit}>
                         Analyze
                      </Button>
@@ -289,16 +289,21 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
                   discover potential issues early on and more confidently maintain your code.
                </InfoText>
             </div>
-            <Button
-               shape="round"
-               type="primary"
-               size="large"
-               block
-               className={'pulsingButton'}
-               href={`https://github.com/apps/${process.env.REACT_APP_GH_APP_NAME}/installations/new`}>
-               <Icon type="github" />
-               Install the GitHub app
-            </Button>
+            <Link to={RouteMap.LANDING_PREMIUM || '/'}>
+               <Button shape="round">
+                  Learn about <strong>&nbsp;DepChecker Pro</strong>
+               </Button>
+            </Link>
+            {/*<Button*/}
+            {/*   shape="round"*/}
+            {/*   type="primary"*/}
+            {/*   size="large"*/}
+            {/*   block*/}
+            {/*   className={'pulsingButton'}*/}
+            {/*   href={`https://github.com/apps/${process.env.REACT_APP_GH_APP_NAME}/installations/new`}>*/}
+            {/*   <Icon type="github" />*/}
+            {/*   Install the GitHub app*/}
+            {/*</Button>*/}
          </RepoAnalysisInfo>
       );
    };
@@ -318,11 +323,17 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
                         <FileDropzone onDrop={onDrop} hasFile={hasFile}>
                            <RepoUrlLabel>Paste a link to a repository</RepoUrlLabel>
                            <RepoUrlInput
+                              id="basic_repoUrlInput"
                               value={url}
                               placeholder={'https://github.com/ryanjyost/react-spa-starter'}
                               onChange={e => handleUrlChange(e.target.value)}
                            />
-                           <Button type="default" shape="round" block onClick={() => togglePastingCode(true)}>
+                           <Button
+                              id="basic_pasteCodeButton"
+                              type="default"
+                              shape="round"
+                              block
+                              onClick={() => togglePastingCode(true)}>
                               Click here to paste the code directly
                            </Button>
                            <ExampleLink to={RouteMap.RESULTS} onClick={startExample}>
