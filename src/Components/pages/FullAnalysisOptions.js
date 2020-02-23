@@ -239,7 +239,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
          <ReadyContainer>
             <Icon type="experiment" />
             <Title level={4}>Dependencies are ready to analyze {text}</Title>
-            <Link to={RouteMap.BASIC_RESULTS}>
+            <Link id="basic_analyzeButton" to={RouteMap.BASIC_RESULTS}>
                <Button block type={'primary'} onClick={handleSubmit}>
                   Analyze
                </Button>
@@ -254,7 +254,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
          <PasteCodeContainer>
             <Title level={3}>
                {hasFile ? (
-                  <Link to={RouteMap.BASIC_RESULTS}>
+                  <Link id="pasteCode_analyzeButton" to={RouteMap.BASIC_RESULTS}>
                      <Button block type={'primary'} size="large" onClick={handleSubmit}>
                         Analyze
                      </Button>
@@ -290,7 +290,9 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
                </InfoText>
             </div>
             <Link to={RouteMap.LANDING_PREMIUM || '/'}>
-               <Button shape="round">Learn about <strong>&nbsp;DepChecker Pro</strong></Button>
+               <Button shape="round">
+                  Learn about <strong>&nbsp;DepChecker Pro</strong>
+               </Button>
             </Link>
          </RepoAnalysisInfo>
       );
@@ -311,11 +313,17 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
                         <FileDropzone onDrop={onDrop} hasFile={hasFile}>
                            <RepoUrlLabel>Paste a link to a repository</RepoUrlLabel>
                            <RepoUrlInput
+                              id="basic_repoUrlInput"
                               value={url}
                               placeholder={'https://github.com/ryanjyost/react-spa-starter'}
                               onChange={e => handleUrlChange(e.target.value)}
                            />
-                           <Button type="default" shape="round" block onClick={() => togglePastingCode(true)}>
+                           <Button
+                              id="basic_pasteCodeButton"
+                              type="default"
+                              shape="round"
+                              block
+                              onClick={() => togglePastingCode(true)}>
                               Click here to paste the code directly
                            </Button>
                            <ExampleLink to={RouteMap.BASIC_RESULTS} onClick={startExample}>
