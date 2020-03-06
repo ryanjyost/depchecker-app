@@ -44,6 +44,7 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
    const {
       params: { owner, repo }
    } = match;
+   const projectName = repo ? `${owner || ''}/${repo || 'Unknown'}` : packageJSON ? packageJSON.name : 'Unknown';
 
    const analysisExists = packageJSON && packageJSON.name && packageJSON.name === repo;
 
@@ -90,12 +91,10 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
          <BasicHeader />
          <MainContainer>
             <SectionTitle level={3}>
-               <strong>
-                  {repo ? `${owner || ''}/${repo || 'Unknown'}` : packageJSON ? `${packageJSON.name}` : null}
-               </strong>
+               <strong>{projectName}</strong>
             </SectionTitle>
             <AnalysisSummary data={summary} />
-            <DependencyTable dependencies={dependencies} />
+            <DependencyTable projectName={projectName} dependencies={dependencies} />
          </MainContainer>
          <BasicFooter />
       </Root>

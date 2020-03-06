@@ -19,13 +19,13 @@ const env = {
    },
    staging: {
       REACT_APP_ENV: 'STAGING',
-      REACT_APP_ClientUrl: 'www.staging.website.com',
+      REACT_APP_ClientUrl: 'https://staging.depchecker.com',
       BUCKET_NAME: STAGING_BUCKET,
       CLOUDFRONT_DIST_ID: STAGING_CF_DIST_ID
    },
    production: {
       REACT_APP_ENV: 'PRODUCTION',
-      REACT_APP_ClientUrl: 'www.website.com',
+      REACT_APP_ClientUrl: 'https://depchecker.com',
       BUCKET_NAME: PRODUCTION_BUCKET,
       CLOUDFRONT_DIST_ID: PRODUCTION_CF_DIST_ID
    }

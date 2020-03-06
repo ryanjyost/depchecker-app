@@ -148,9 +148,9 @@ const RepoAnalysisInfo = styled.div`
 
 const InfoText = styled.div`
    margin-bottom: 10px;
-   line-height: 2;
-   font-size: 15px;
-   color: ${COLORS.whiteOp(0.9)};
+   line-height: 1.7;
+   font-size: 18px;
+   color: ${COLORS.whiteOp(0.7)};
    font-weight: 500;
    strong {
       font-weight: 700;
@@ -239,7 +239,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
          <ReadyContainer>
             <Icon type="experiment" />
             <Title level={4}>Dependencies are ready to analyze {text}</Title>
-            <Link id="basic_analyzeButton" to={RouteMap.BASIC_RESULTS}>
+            <Link id="basic_analyzeButton" to={RouteMap.RESULTS}>
                <Button block type={'primary'} onClick={handleSubmit}>
                   Analyze
                </Button>
@@ -254,7 +254,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
          <PasteCodeContainer>
             <Title level={3}>
                {hasFile ? (
-                  <Link id="pasteCode_analyzeButton" to={RouteMap.BASIC_RESULTS}>
+                  <Link id="pasteCode_analyzeButton" to={RouteMap.RESULTS}>
                      <Button block type={'primary'} size="large" onClick={handleSubmit}>
                         Analyze
                      </Button>
@@ -285,7 +285,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
             <div>
                <Title level={2}>Maintain JavaScript projects?</Title>
                <InfoText>
-                  DepChecker is a free tool that makes it easy to analyze and monitor your npm dependencies. So you can
+                  DepChecker makes it easy to analyze and monitor your npm dependencies, so you can
                   discover potential issues early on and more confidently maintain your code.
                </InfoText>
             </div>
@@ -294,6 +294,16 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
                   Learn about <strong>&nbsp;DepChecker Pro</strong>
                </Button>
             </Link>
+            {/*<Button*/}
+            {/*   shape="round"*/}
+            {/*   type="primary"*/}
+            {/*   size="large"*/}
+            {/*   block*/}
+            {/*   className={'pulsingButton'}*/}
+            {/*   href={`https://github.com/apps/${process.env.REACT_APP_GH_APP_NAME}/installations/new`}>*/}
+            {/*   <Icon type="github" />*/}
+            {/*   Install the GitHub app*/}
+            {/*</Button>*/}
          </RepoAnalysisInfo>
       );
    };
@@ -326,7 +336,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
                               onClick={() => togglePastingCode(true)}>
                               Click here to paste the code directly
                            </Button>
-                           <ExampleLink to={RouteMap.BASIC_RESULTS} onClick={startExample}>
+                           <ExampleLink to={RouteMap.RESULTS} onClick={startExample}>
                               Try an example
                            </ExampleLink>
                         </FileDropzone>

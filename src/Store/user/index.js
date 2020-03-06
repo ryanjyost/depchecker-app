@@ -1,4 +1,5 @@
 import update from 'immutability-helper';
+import moment from 'moment';
 import { createSagaActions } from '../actionGenerators';
 import reduceReducers from '../reduceReducers';
 import persist from '../persist';
@@ -9,7 +10,8 @@ import persist from '../persist';
  */
 const InitialState = {
    fetching: false,
-   user: null,
+   installation: null,
+   repos: [],
    isAuthenticated: false,
    error: null
 };
@@ -20,7 +22,7 @@ const InitialState = {
 const login = createSagaActions(
    'LOGIN',
    {
-      request: (username, password) => ({ username, password }),
+      request: code => ({ code }),
       success: response => ({ response }),
       failure: error => ({ error })
    },
@@ -34,8 +36,7 @@ function loginReducer(state = InitialState, action) {
          return update(state, {
             fetching: { $set: true },
             error: { $set: null },
-            isAuthenticated: { $set: false },
-            user: { $set: payload.username }
+            isAuthenticated: { $set: false }
          });
       case login.types.success:
          return update(state, {
@@ -81,9 +82,104 @@ function logoutReducer(state = InitialState, action) {
    }
 }
 
+const setupNewInstallation = createSagaActions(
+   'NEW_INSTALLATION',
+   {
+      request: (code, installationId) => ({ code, installationId }),
+      success: (installation, repos) => ({
+         installation,
+         repos: repos.sort((a, b) => {
+            a = moment(a).unix();
+            b = moment(b).unix();
+
+            if (a > b) return 1;
+            if (b > a) return -1;
+            return 0;
+         })
+      }),
+      failure: error => ({ error })
+   },
+   'user'
+);
+
+function setupNewInstallationReducer(state = InitialState, action) {
+   const { payload } = action;
+   switch (action.type) {
+      case setupNewInstallation.types.request:
+         return update(state, {
+            fetching: { $set: true },
+            error: { $set: null }
+         });
+
+      case setupNewInstallation.types.success:
+         return update(state, {
+            fetching: { $set: false },
+            installation: { $set: payload.installation },
+            repos: { $set: payload.repos }
+         });
+
+      case setupNewInstallation.types.failure:
+         return update(state, {
+            fetching: { $set: false },
+            error: { $set: `Error occurred` }
+         });
+      default:
+         return state;
+   }
+}
+
+const updateInstallationRepos = createSagaActions(
+   'UPDATE_INSTALLATION_REPOS',
+   {
+      request: (installationId, repos) => ({ installationId, repos }),
+      success: installation => ({
+         installation
+      }),
+      failure: error => ({ error })
+   },
+   'user'
+);
+
+function updateInstallationReposReducer(state = InitialState, action) {
+   const { payload } = action;
+   switch (action.type) {
+      case updateInstallationRepos.types.request:
+         return update(state, {
+            fetching: { $set: true },
+            error: { $set: null }
+         });
+
+      case updateInstallationRepos.types.success:
+         return update(state, {
+            fetching: { $set: false },
+            installation: { $set: payload.installation }
+         });
+
+      case updateInstallationRepos.types.failure:
+         return update(state, {
+            fetching: { $set: false },
+            error: { $set: `Error occurred` }
+         });
+      default:
+         return state;
+   }
+}
+
 export const actions = {
    login,
-   logout
+   logout,
+   setupNewInstallation,
+   updateInstallationRepos
 };
 
-export default persist('user', [], reduceReducers(InitialState, loginReducer, logoutReducer));
+export default persist(
+   'user',
+   [],
+   reduceReducers(
+      InitialState,
+      loginReducer,
+      logoutReducer,
+      setupNewInstallationReducer,
+      updateInstallationReposReducer
+   )
+);

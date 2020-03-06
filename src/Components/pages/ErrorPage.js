@@ -9,6 +9,7 @@ const Container = styled.div`
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   height: 100vh;
 `;
 
 /**
@@ -22,7 +23,7 @@ export default function ErrorPage() {
             title="500"
             subTitle="An unknown error occurred."
             extra={
-               <Link to={RouteMap.ROOT}>
+               <Link to={RouteMap.INDEX}>
                   <Button type="primary">Back Home</Button>
                </Link>
             }
