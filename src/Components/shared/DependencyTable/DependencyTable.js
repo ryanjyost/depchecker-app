@@ -24,7 +24,6 @@ TimeAgo.addLocale(en);
 const timeAgo = new TimeAgo('en-US');
 
 export default function DependencyTable({ projectName, dependencies }) {
-   console.log(dependencies);
    const [csvData, updateCSVData] = useState([]);
 
    useEffect(() => {

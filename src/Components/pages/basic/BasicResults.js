@@ -34,7 +34,6 @@ const SectionTitle = styled(Title)`
 
 function BasicResults({ dependencies, summary, packageJSON, fetching, match, analyzeRepoUrl }) {
    const MESSAGE_KEY = 'BASIC_RESULTS_PROGRESS';
-   const projectName = repo ? `${owner || ''}/${repo || 'Unknown'}` : packageJSON ? packageJSON.name : "Unknown";
    const numDepsInRepo = useMemo(() => {
       if (!packageJSON) return null;
       const devDeps = packageJSON.devDependencies ? Object.keys(packageJSON.devDependencies) : [];
@@ -45,6 +44,7 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
    const {
       params: { owner, repo }
    } = match;
+   const projectName = repo ? `${owner || ''}/${repo || 'Unknown'}` : packageJSON ? packageJSON.name : 'Unknown';
 
    const analysisExists = packageJSON && packageJSON.name && packageJSON.name === repo;
 
@@ -91,9 +91,7 @@ function BasicResults({ dependencies, summary, packageJSON, fetching, match, ana
          <BasicHeader />
          <MainContainer>
             <SectionTitle level={3}>
-               <strong>
-                 {projectName}
-               </strong>
+               <strong>{projectName}</strong>
             </SectionTitle>
             <AnalysisSummary data={summary} />
             <DependencyTable projectName={projectName} dependencies={dependencies} />
