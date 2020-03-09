@@ -289,21 +289,21 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
                   discover potential issues early on and more confidently maintain your code.
                </InfoText>
             </div>
-            <Link to={RouteMap.LANDING_PREMIUM || '/'}>
-               <Button shape="round">
-                  Learn about <strong>&nbsp;DepChecker Pro</strong>
-               </Button>
-            </Link>
-            {/*<Button*/}
-            {/*   shape="round"*/}
-            {/*   type="primary"*/}
-            {/*   size="large"*/}
-            {/*   block*/}
-            {/*   className={'pulsingButton'}*/}
-            {/*   href={`https://github.com/apps/${process.env.REACT_APP_GH_APP_NAME}/installations/new`}>*/}
-            {/*   <Icon type="github" />*/}
-            {/*   Install the GitHub app*/}
-            {/*</Button>*/}
+            {/*<Link to={RouteMap.LANDING_PREMIUM || '/'}>*/}
+            {/*   <Button shape="round">*/}
+            {/*      Learn about <strong>&nbsp;DepChecker Pro</strong>*/}
+            {/*   </Button>*/}
+            {/*</Link>*/}
+            <Button
+               shape="round"
+               type="primary"
+               size="large"
+               block
+               className={'pulsingButton'}
+               href={`https://github.com/apps/${process.env.REACT_APP_GH_APP_NAME}/installations/new`}>
+               <Icon type="github" />
+               Install the free GitHub app
+            </Button>
          </RepoAnalysisInfo>
       );
    };

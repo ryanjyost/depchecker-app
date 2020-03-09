@@ -17,7 +17,7 @@ function RootWrapper({ error, location, children }) {
    // show error banner if one found in redux
    useEffect(() => {
       if (error) {
-         message.error(this.props.error);
+         message.error(error);
       }
    }, [error]);
 
