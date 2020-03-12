@@ -285,8 +285,8 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
             <div>
                <Title level={2}>Maintain JavaScript projects?</Title>
                <InfoText>
-                  DepChecker makes it easy to analyze and monitor your npm dependencies, so you can
-                  discover potential issues early on and more confidently maintain your code.
+                  DepChecker makes it easy to analyze and monitor your npm dependencies, so you can discover potential
+                  issues early on and more confidently maintain your code.
                </InfoText>
             </div>
             {/*<Link to={RouteMap.LANDING_PREMIUM || '/'}>*/}
@@ -302,7 +302,7 @@ function FullAnalysisOption({ packageJSON, analyzePackageJSON, readPackageJSON, 
                className={'pulsingButton'}
                href={`https://github.com/apps/${process.env.REACT_APP_GH_APP_NAME}/installations/new`}>
                <Icon type="github" />
-               Install the free GitHub app
+               Add DepChecker to GitHub
             </Button>
          </RepoAnalysisInfo>
       );

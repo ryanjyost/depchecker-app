@@ -25,28 +25,30 @@ const Content = styled(Layout.Content)`
 `;
 
 function AuthRedirect({ login, setupNewInstallation, installation }) {
-   useEffect(() => {
-      const params = qs.parse(window.location.search);
-      if (!params) return;
-      if (params.setup_action && params.setup_action === 'install') {
-         const { code, installation_id } = params;
-         setupNewInstallation(code, installation_id);
-      } else {
-         login(params.code);
-      }
-   }, []);
+   // useEffect(() => {
+   //    const params = qs.parse(window.location.search);
+   //    if (!params) return;
+   //    if (params.setup_action && params.setup_action === 'install') {
+   //       const { code, installation_id } = params;
+   //       setupNewInstallation(code, installation_id);
+   //    } else {
+   //       login(params.code);
+   //    }
+   // }, []);
+   //
+   // if (installation) {
+   //    if (!installation.repos.length) {
+   //       return <Redirect to={RouteMap.SETUP_REPOS} />;
+   //    }
+   // }
 
-   if (installation) {
-      if (!installation.repos.length) {
-         return <Redirect to={RouteMap.SETUP_REPOS} />;
-      }
-   }
+   return <Redirect to={RouteMap.SETUP_COMPLETE} />;
 
-   return (
-      <Root>
-         <Content>Loading</Content>
-      </Root>
-   );
+   // return (
+   //    <Root>
+   //       <Content>Loading</Content>
+   //    </Root>
+   // );
 }
 
 const mapStateToProps = state => {

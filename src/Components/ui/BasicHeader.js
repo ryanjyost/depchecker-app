@@ -54,8 +54,8 @@ export default function BasicHeader() {
             <LogoText level={4}>DepChecker</LogoText>
          </LogoContainer>
          <LinkContainer>
-            <StyledLink to="/demo">Demo</StyledLink>
-            <MenuLink href="/#how-it-works">How it works</MenuLink>
+            <StyledLink to="/demo">Try Demo</StyledLink>
+            <MenuLink href="/#how-it-works">How it Works</MenuLink>
             <MenuLink href="/#features">Features</MenuLink>
             <MenuLink href="/#pricing">Pricing</MenuLink>
             <MenuLink href="https://github.com/ryanjyost/depchecker">Github</MenuLink>

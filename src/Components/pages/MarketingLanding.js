@@ -581,7 +581,7 @@ export default function Landing() {
                {/*</h2>*/}
                {renderSection(
                   'Get valuable info',
-                  'For each new or upgraded dependency, DepChecker aggregates pertinent data and posts it in your pull request on GitHub.',
+                  'For each new or updated dependency, DepChecker aggregates pertinent data and posts it in your pull request on GitHub.',
                   'github',
                   2
                )}
@@ -601,7 +601,7 @@ export default function Landing() {
             </div>
             <div style={{ padding: 10, maxWidth: 800, marginTop: 50 }}>
                <BrowserPreview styles={styles} isMain>
-                  <img src={'/depchecker-pr-example.png'} width="100%" />
+                  <img src={'/depchecker-pr-preview.png'} width="100%" />
                </BrowserPreview>
             </div>
          </div>
@@ -894,7 +894,7 @@ export default function Landing() {
                      paddingRight: 20,
                      marginBottom: 50
                   }}>
-                  If it saves your team a couple minutes per pull request, then it's worth a try!
+                  It will save your team time - so give it a try!
                </h1>
                <Button
                   shape="round"
