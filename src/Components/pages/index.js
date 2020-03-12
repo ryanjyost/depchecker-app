@@ -13,6 +13,8 @@ import Login from './Login';
 import AuthRedirect from './AuthRedirect';
 import SelectRepos from './SelectRepos';
 import SetupComplete from './SetupComplete';
+import Terms from './Terms';
+import Privacy from './Privacy';
 
 export {
    NotFound,
@@ -29,5 +31,7 @@ export {
    Login,
    AuthRedirect,
    SelectRepos,
-   SetupComplete
+   SetupComplete,
+   Terms,
+   Privacy
 };

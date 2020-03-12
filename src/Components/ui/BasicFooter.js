@@ -20,6 +20,7 @@ const LinkContainer = styled.div`
    display: flex;
    align-items: center;
    justify-content: flex-end;
+   flex-wrap: wrap;
 `;
 
 const Text = styled(Typography.Text)`
@@ -33,11 +34,18 @@ const FooterLink = styled.a`
    font-size: 12px;
 `;
 
+const FooterInternalLink = styled(Link)`
+   margin: 0px 10px 0px 10px;
+   font-size: 12px;
+`;
+
 export default function BasicHeader() {
    return (
       <Root>
          <LinkContainer>
             <Text>Copyright © 2020 depchecker.com</Text>
+            <FooterInternalLink to="/terms">Terms</FooterInternalLink>
+            <FooterInternalLink to="/privacy">Privacy</FooterInternalLink>
             <FooterLink href="https://depchecker.com/blog">Blog</FooterLink>
             <FooterLink href="mailto:ryanjyost@gmail.com?subject=DepChecker">Contact</FooterLink>
             <FooterLink href="https://github.com/ryanjyost/depchecker">GitHub</FooterLink>

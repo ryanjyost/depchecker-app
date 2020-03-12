@@ -13,7 +13,9 @@ import {
    AuthRedirect,
    SelectRepos,
    SetupComplete,
-   MarketingLanding
+   MarketingLanding,
+   Terms,
+   Privacy
 } from 'Components/pages';
 import { RootRouteWithSubRoutes } from 'Components/routes';
 const { Title } = Typography;
@@ -23,6 +25,8 @@ const { Title } = Typography;
  */
 const ROUTES = [
    { key: 'DEMO', path: '/demo', title: 'Analysis', component: FullAnalysisOptions, exact: true },
+   { key: 'TERMS', path: '/terms', title: 'Terms', component: Terms, exact: true },
+   { key: 'PRIVACY', path: '/privacy', title: 'Privacy', component: Privacy, exact: true },
    { key: 'RESULTS', path: '/analysis', title: 'Results', component: BasicResults, exact: true },
    { key: 'LOGIN', path: '/login', title: 'Log In', component: Login, exact: true },
    { key: 'AUTH_REDIRECT', path: '/auth', title: 'Auth', component: AuthRedirect },
