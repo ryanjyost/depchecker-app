@@ -78,7 +78,7 @@ export default function Landing() {
                         paddingRight: 20,
                         marginBottom: 20
                      }}>
-                     Better code reviews, fewer headaches
+                     Find and fix npm dependency issues
                   </h1>
                   <h2
                      style={{
@@ -104,6 +104,7 @@ export default function Landing() {
                   <Button href="#how-it-works" shape="round" type="secondary" size="large" style={{ marginLeft: 10 }}>
                      Learn how it works
                   </Button>
+                  <h4 style={{marginTop: 20}}>Try it free. No credit card required. Instant setup.</h4>
                   {/*<h5*/}
                   {/*   style={{*/}
                   {/*      paddingLeft: 5,*/}
