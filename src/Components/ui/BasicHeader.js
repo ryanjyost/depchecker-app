@@ -8,11 +8,12 @@ const { Header } = Layout;
 const { Title } = Typography;
 
 const Root = styled(Header)`
-   // background-color: ${COLORS.blackOp(0.95)};
+   background-color: transparent;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   padding: 0px 30px !important;
+   flex-wrap: wrap;
+   padding: 10px 30px !important;
    //position: fixed;
    z-index: 1;
    width: 100%;
@@ -36,8 +37,13 @@ const LinkContainer = styled.div`
    align-items: center;
 `;
 
-const IssuesLink = styled.a`
-   margin: 10px 20px 0px 10px;
+const MenuLink = styled.a`
+   margin: 2px 10px 5px 10px;
+   line-height: 1;
+`;
+
+const StyledLink = styled(Link)`
+   margin: 2px 10px 5px 10px;
 `;
 
 export default function BasicHeader() {
@@ -48,18 +54,11 @@ export default function BasicHeader() {
             <LogoText level={4}>DepChecker</LogoText>
          </LogoContainer>
          <LinkContainer>
-            <IssuesLink href={'https://github.com/ryanjyost/depchecker/issues/new'} target={'_blank'}>
-               <Button type="default" size="small" shape="round">
-                  Submit issues & feature ideas
-               </Button>
-            </IssuesLink>
-            <GitHubButton
-               href="https://github.com/ryanjyost/depchecker"
-               data-color-scheme="no-preference: light; light: light; dark: dark;"
-               data-size="large"
-               aria-label="Star ryanjyost/depchecker on GitHub">
-               Star
-            </GitHubButton>
+            <StyledLink to="/demo">Demo</StyledLink>
+            <MenuLink href="/#how-it-works">How it works</MenuLink>
+            <MenuLink href="/#features">Features</MenuLink>
+            <MenuLink href="/#pricing">Pricing</MenuLink>
+            <MenuLink href="https://github.com/ryanjyost/depchecker">Github</MenuLink>
          </LinkContainer>
       </Root>
    );

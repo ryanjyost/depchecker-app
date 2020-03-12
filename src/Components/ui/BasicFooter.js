@@ -13,6 +13,7 @@ const Root = styled(Footer)`
    padding: 20px 30px !important;
    z-index: 1;
    width: 100%;
+   background-color: transparent;
 `;
 
 const LinkContainer = styled.div`
