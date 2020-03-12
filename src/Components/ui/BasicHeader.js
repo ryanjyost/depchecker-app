@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { Button, Layout, Typography } from 'antd';
-import GitHubButton from 'react-github-btn';
-import { COLORS } from 'Styles';
+import {Layout, Typography } from 'antd';
 const { Header } = Layout;
 const { Title } = Typography;
 
