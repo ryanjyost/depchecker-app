@@ -601,7 +601,7 @@ export default function Landing() {
             </div>
             <div style={{ padding: 10, maxWidth: 800, marginTop: 50 }}>
                <BrowserPreview styles={styles} isMain>
-                  <img src={'/depchecker-preview.png'} width="100%" />
+                  <img src={'/depchecker-pr-example.png'} width="100%" />
                </BrowserPreview>
             </div>
          </div>
