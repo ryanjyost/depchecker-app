@@ -44,6 +44,7 @@ const MenuLink = styled.a`
 
 const StyledLink = styled(Link)`
    margin: 2px 10px 5px 10px;
+   line-height: 1;
 `;
 
 export default function BasicHeader() {
@@ -58,6 +59,7 @@ export default function BasicHeader() {
             <MenuLink href="/#how-it-works">How it Works</MenuLink>
             <MenuLink href="/#features">Features</MenuLink>
             <MenuLink href="/#pricing">Pricing</MenuLink>
+            <MenuLink href="mailto:ryanjyost.com">Contact</MenuLink>
             <MenuLink href="https://github.com/ryanjyost/depchecker">Github</MenuLink>
          </LinkContainer>
       </Root>
