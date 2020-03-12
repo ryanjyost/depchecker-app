@@ -720,7 +720,7 @@ export default function Landing() {
                {renderSingleBenefit(
                   'Open Issues & PRs',
                   <span>Are there too many open issues compared to the popularity of the dependency?</span>,
-                  'link'
+                  'fork'
                )}
             </div>
             <h3 style={{ margin: '50px 0px 20px 0px', fontSize: 20, fontWeight: 500 }}>
