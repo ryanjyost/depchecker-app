@@ -76,9 +76,11 @@ export default function Landing() {
                         lineHeight: 1.2,
                         fontWeight: '700',
                         paddingRight: 20,
-                        marginBottom: 20
+                        maxWidth: 650,
+                        margin:'auto',
+                        marginBottom: 20,
                      }}>
-                     Find and fix npm dependency issues
+                     Find npm dependency issues before they impact your code
                   </h1>
                   <h2
                      style={{
@@ -89,8 +91,8 @@ export default function Landing() {
                         margin: 'auto',
                         marginBottom: 40
                      }}>
-                     DepChecker provides all of the data your team needs to thoroughly review npm dependency changes,
-                     right in your GitHub pull requests.
+                     DepChecker provides the data and analysis your team needs to thoroughly review npm dependencies,
+                     all within your existing GitHub work flows.
                   </h2>
                   <Button
                      shape="round"
