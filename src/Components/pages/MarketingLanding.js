@@ -77,8 +77,8 @@ export default function Landing() {
                         fontWeight: '700',
                         paddingRight: 20,
                         maxWidth: 650,
-                        margin:'auto',
-                        marginBottom: 20,
+                        margin: 'auto',
+                        marginBottom: 20
                      }}>
                      Find npm dependency issues before they impact your code
                   </h1>
@@ -91,8 +91,8 @@ export default function Landing() {
                         margin: 'auto',
                         marginBottom: 40
                      }}>
-                     DepChecker provides the data and analysis your team needs to thoroughly review npm dependencies,
-                     all within your existing GitHub work flows.
+                     DepChecker provides the data and analysis that developers need to thoroughly review npm
+                     dependencies, all within your GitHub work flows.
                   </h2>
                   <Button
                      shape="round"
@@ -106,7 +106,7 @@ export default function Landing() {
                   <Button href="#how-it-works" shape="round" type="secondary" size="large" style={{ marginLeft: 10 }}>
                      Learn how it works
                   </Button>
-                  <h4 style={{marginTop: 20}}>Try it free. No credit card required. Instant setup.</h4>
+                  <h4 style={{ marginTop: 20 }}>Try it free. No credit card required. Instant setup.</h4>
                   {/*<h5*/}
                   {/*   style={{*/}
                   {/*      paddingLeft: 5,*/}
