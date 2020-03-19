@@ -106,7 +106,7 @@ export default function Landing() {
                   <Button href="#how-it-works" shape="round" type="secondary" size="large" style={{ marginLeft: 10 }}>
                      Learn how it works
                   </Button>
-                  <h4 style={{ marginTop: 20 }}>Try it free. No credit card required. Instant setup.</h4>
+                  <h4 style={{ marginTop: 20, opacity: 0.7 }}>Try it free. No credit card required. Instant setup.</h4>
                   {/*<h5*/}
                   {/*   style={{*/}
                   {/*      paddingLeft: 5,*/}
