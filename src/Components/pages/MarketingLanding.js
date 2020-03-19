@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import Particles from 'react-particles-js';
 import { Button, Icon } from 'antd';
 import { RouteMap as ROUTES } from 'Routes';
 import { COLORS } from 'Styles';
-import { MainHeader } from 'Components/ui';
-import BasicHeader from 'Components/ui/BasicHeader';
+import { BasicHeader, BasicFooter, MainHeader } from 'Components/ui';
 import { useResponsive } from 'Components/hooks';
 
 const Root = styled.div`
    .anticon {
-      color: ${COLORS.blue} !important;
+      color: ${COLORS.blue};
    }
 `;
 
@@ -32,7 +32,7 @@ export default function Landing() {
             }}>
             <Icon
                style={{
-                  color: COLORS.white,
+                  color: COLORS.blue,
                   fontSize: 40,
                   margin: '2px 5px'
                }}
@@ -47,7 +47,7 @@ export default function Landing() {
                   }}>
                   <strong>{title} </strong>
                </h4>
-               <h5 style={{ marginBottom: 0,opacity: 0.7, }}>{desc}</h5>
+               <h5 style={{ marginBottom: 0, opacity: 0.7 }}>{desc}</h5>
             </div>
          </div>
       );
@@ -55,64 +55,72 @@ export default function Landing() {
 
    const First = ({ styles }) => {
       return (
-         <div
-            style={{
-               display: 'flex',
-               alignItems: 'center',
-               flexWrap: 'wrap',
-               justifyContent: 'center'
-            }}>
-            <div style={{ flex: 1, padding: '40px 20px 0px 20px' }}>
-               <h1
-                  style={{
-                     fontSize: 36,
-                     lineHeight: 1.2,
-                     fontWeight: '700',
-                     paddingRight: 20,
-                     marginBottom: 20
-                  }}>
-                  Maintain JavaScript projects?
-               </h1>
-               <h2
-                  style={{
-                     lineHeight: 1.4,
-                     fontSize: 18,
-                     marginBottom: 20,
-                     paddingRight: 20
-                  }}>
-                  {/*Quickly and easily discover dependency management opportunities that lead to better software, more*/}
-                  {/*billable hours and happier clients.*/}
-                  {/*DepChecker makes it easy to understand the state of your projects' npm dependencies, so that you can*/}
-                  {/*more efficiently make version updates, discover potential issues and maintain your software.*/}
-                  Let’s be honest, software has a lot of pieces... Depchecker makes it easy to monitor every single npm
-                  dependency that your projects rely on.
-               </h2>
-               <Link id={`ctaTopLanding`} to={ROUTES.BASIC_INDEX}>
+         <div style={{ position: 'relative' }}>
+            <Particles width="100%" height="80vh" />
+            <div
+               style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  height: 'calc(100vh - 200px)',
+                  width: '100%'
+               }}>
+               <div style={{ flex: 1, padding: '40px 20px 0px 20px', textAlign: 'center' }}>
+                  <h1
+                     style={{
+                        fontSize: 40,
+                        lineHeight: 1.2,
+                        fontWeight: '700',
+                        paddingRight: 20,
+                        maxWidth: 650,
+                        margin: 'auto',
+                        marginBottom: 20
+                     }}>
+                     Find npm dependency issues before they impact your code
+                  </h1>
+                  <h2
+                     style={{
+                        lineHeight: 1.4,
+                        fontSize: 22,
+                        paddingRight: 20,
+                        maxWidth: 600,
+                        margin: 'auto',
+                        marginBottom: 40
+                     }}>
+                     DepChecker provides the data and analysis that developers need to thoroughly review npm
+                     dependencies, all within your GitHub work flows.
+                  </h2>
                   <Button
-                     id={`ctaTopLanding`}
-                     size={'large'}
-                     type={'primary'}
+                     shape="round"
+                     type="primary"
+                     size="large"
                      className={'pulsingButton'}
-                     style={{ marginBottom: 10 }}>
-                     {/*<span style={{ paddingRight: 8, fontWeight: 'bold' }}>*/}
-                     {/*   Analyze a <code style={{ color: '#fff' }}>package.json</code>*/}
-                     {/*</span>{' '}*/}
-                     <span style={{ paddingRight: 8, fontWeight: 'bold' }}>Analyze Dependencies</span> &rarr;
+                     href={`https://github.com/apps/${process.env.REACT_APP_GH_APP_NAME}/installations/new`}>
+                     <Icon style={{ color: '#fff' }} color={'#fff'} type="github" />
+                     Sign Up
                   </Button>
-               </Link>
-               <h5
-                  style={{
-                     paddingLeft: 5,
-                     maxWidth: 300,
-                     opacity: 0.6
-                  }}>
-                  No need to provide email, payment or spare kidney for for basic version.
-               </h5>
-            </div>
-            <div style={{ flex: 1.3, padding: 10 }}>
-               <BrowserPreview styles={styles} isMain>
-                  <img src={"/depchecker-preview.png"} width="100%" />
-               </BrowserPreview>
+                  <Button href="#how-it-works" shape="round" type="secondary" size="large" style={{ marginLeft: 10 }}>
+                     Learn how it works
+                  </Button>
+                  <h4 style={{ marginTop: 20, opacity: 0.7 }}>Try it free. No credit card required. Instant setup.</h4>
+                  {/*<h5*/}
+                  {/*   style={{*/}
+                  {/*      paddingLeft: 5,*/}
+                  {/*      maxWidth: 300,*/}
+                  {/*      opacity: 0.6*/}
+                  {/*   }}>*/}
+                  {/*   No need to provide email, payment or spare kidney for for basic version.*/}
+                  {/*</h5>*/}
+               </div>
+               {/*<div style={{ flex: 1.3, padding: 10 }}>*/}
+               {/*   <BrowserPreview styles={styles} isMain>*/}
+               {/*      <img src={"/depchecker-preview.png"} width="100%" />*/}
+               {/*   </BrowserPreview>*/}
+               {/*</div>*/}
             </div>
          </div>
       );
@@ -456,10 +464,11 @@ export default function Landing() {
                   'code'
                )}
                {renderSingleBenefit(
-                  'Avoid maintenance fire drills ',
-                  `By proactively reviewing dependencies, you'll update and refactor before one of myriad inevitable issues gives you no other choice at an inopportune time.`,
+                  'Avoid preventable issues',
+                  `By proactively reviewing dependencies, your team will understand and know how to manage 3rd party code.`,
                   'fire'
                )}
+
                {/*{renderSingleBenefit(*/}
                {/*   `Make your clients happier`,*/}
                {/*   `Clients like to know they're being taken care of. Give them peace of mind through regular dependency management.`,*/}
@@ -487,7 +496,7 @@ export default function Landing() {
    };
 
    const HowItWorks = ({ styles }) => {
-      const renderSection = (step, text, icon) => {
+      const renderSection = (step, text, icon, stepNum) => {
          return (
             <div
                style={{
@@ -495,9 +504,12 @@ export default function Landing() {
                   flexDirection: 'column',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  flex: 1
+                  flex: 1,
+                  margin: isWide ? '20px 20px' : '40px 0px',
+                  maxWidth: 300
                }}>
-               <div>
+               <div style={{ width: '50%', textAlign: 'left', fontSize: 18, fontWeight: '500' }}>{stepNum}</div>
+               <div style={{ background: 'rgba(255, 255, 255, 0.1)', padding: 20, borderRadius: '50%' }}>
                   <Icon
                      style={{
                         fontSize: 60,
@@ -507,6 +519,7 @@ export default function Landing() {
                      type={icon}
                   />
                </div>
+
                <div
                   style={{
                      margin: '20px 0px 0px 0px',
@@ -515,10 +528,10 @@ export default function Landing() {
                   }}>
                   <h2
                      style={{
-                        marginBottom: 5,
+                        marginBottom: 15,
                         // color: styles.blackOp(0.95),
                         fontSize: 20,
-                        fontWeight: '900'
+                        fontWeight: '700'
                      }}>
                      {step}
                   </h2>
@@ -536,12 +549,14 @@ export default function Landing() {
 
       return (
          <div
+            id="how-it-works"
             style={{
                display: 'flex',
                flexDirection: 'column',
-               alignItems: 'center'
+               alignItems: 'center',
+               paddingTop: 50
             }}>
-            <SectionHeader> There's nothing to setup or install</SectionHeader>
+            <SectionHeader>How it works</SectionHeader>
             <div
                style={{
                   display: 'flex',
@@ -549,26 +564,48 @@ export default function Landing() {
                   justifyContent: isWide ? 'space-between' : 'center',
                   alignItems: isWide ? 'baseline' : 'center',
                   width: '100%',
-                  maxWidth: 700,
+                  maxWidth: 1100,
                   marginTop: 30
                }}>
-               {renderSection('Upload', 'a package.json file', 'cloud-upload')}
-               <h2
-                  style={{
-                     // color: styles.blackOp(0.4),
-                     margin: '20px 0px'
-                  }}>
-                  {isWide ? <span>&rarr;</span> : <span>&darr;</span>}
-               </h2>
-               {renderSection('Relax', 'while DepChecker does its thing', 'coffee')}
-               <h2
-                  style={{
-                     // color: styles.blackOp(0.4),
-                     margin: '20px 0px'
-                  }}>
-                  {isWide ? <span>&rarr;</span> : <span>&darr;</span>}
-               </h2>
-               {renderSection('Improve', 'your project based on the analysis results', 'rise')}
+               {renderSection(
+                  'Open a pull request',
+                  <span>
+                     If there are any diffs in <code>package.json</code>, it's go time for DepChecker.{' '}
+                  </span>,
+                  'pull-request',
+                  1
+               )}
+               {/*<h2*/}
+               {/*   style={{*/}
+               {/*      // color: styles.blackOp(0.4),*/}
+               {/*      margin: '20px 0px'*/}
+               {/*   }}>*/}
+               {/*   {isWide ? <span>&rarr;</span> : <span>&darr;</span>}*/}
+               {/*</h2>*/}
+               {renderSection(
+                  'Get valuable info',
+                  'For each new or updated dependency, DepChecker aggregates pertinent data and posts it in your pull request on GitHub.',
+                  'github',
+                  2
+               )}
+               {/*<h2*/}
+               {/*   style={{*/}
+               {/*      // color: styles.blackOp(0.4),*/}
+               {/*      margin: '20px 0px'*/}
+               {/*   }}>*/}
+               {/*   {isWide ? <span>&rarr;</span> : <span>&darr;</span>}*/}
+               {/*</h2>*/}
+               {renderSection(
+                  'Review quickly + confidently',
+                  'With insightful data and easy links, your team will make informed dependency decisions and ship higher quality code.',
+                  'smile',
+                  3
+               )}
+            </div>
+            <div style={{ padding: 10, maxWidth: 800, marginTop: 50 }}>
+               <BrowserPreview styles={styles} isMain>
+                  <img src={'/depchecker-pr-preview.png'} width="100%" />
+               </BrowserPreview>
             </div>
          </div>
       );
@@ -605,40 +642,54 @@ export default function Landing() {
    const PotentialIssues = () => {
       return (
          <div
+            id="features"
             style={{
                display: 'flex',
                alignItems: 'center',
-               flexDirection: 'column'
+               flexDirection: 'column',
+               paddingTop: 50
             }}>
-            <SectionHeader>So, what does this thing do exactly?</SectionHeader>
-            <div
-               style={{
-                  maxWidth: 700
-               }}>
-               <h2
-                  style={{
-                     marginBottom: 50,
-                     textAlign: 'center'
-                     // color: styles.blackOp(0.7)
-                  }}>
-                  DepChecker analyzes important aspects of your projects' npm dependencies and summarizes the results.
-               </h2>
-            </div>
+            <SectionHeader>
+               DepChecker aggregates the following data
+               <br /> for each dependency
+            </SectionHeader>
+            {/*<div*/}
+            {/*   style={{*/}
+            {/*      maxWidth: 700*/}
+            {/*   }}>*/}
+            {/*   <h2*/}
+            {/*      style={{*/}
+            {/*         marginBottom: 50,*/}
+            {/*         textAlign: 'center'*/}
+            {/*         // color: styles.blackOp(0.7)*/}
+            {/*      }}>*/}
+            {/*      DepChecker analyzes important aspects of your projects' npm dependencies and summarizes the results.*/}
+            {/*   </h2>*/}
+            {/*</div>*/}
             <div
                style={{
                   display: 'flex',
                   alignItems: 'stretch',
                   justifyContent: 'center',
                   width: '100%',
-                  flexWrap: 'wrap'
+                  flexWrap: 'wrap',
+                  paddingTop: 40
                }}>
+               {/*{renderSingleBenefit(*/}
+               {/*   'Versions behind the latest release',*/}
+               {/*   <span>*/}
+               {/*      This is the standard metric we think about when assessing the state of our dependencies. But it*/}
+               {/*      ain't the whole picture.*/}
+               {/*   </span>,*/}
+               {/*   'fork'*/}
+               {/*)}*/}
                {renderSingleBenefit(
-                  'Versions behind the latest release',
+                  'Important links',
                   <span>
-                     This is the standard metric we think about when assessing the state of our dependencies. But it
-                     ain't the whole picture.
+                     Rather than randomly googling and jumping from npm to docs to GitHub, DepChecker aggregates these
+                     links for quick reference.
                   </span>,
-                  'fork'
+                  'link'
                )}
                {renderSingleBenefit(
                   'Last publish to npm',
@@ -658,29 +709,34 @@ export default function Landing() {
                )}
                {renderSingleBenefit(
                   'GitHub Stars',
-                  <span>
-                     How popular a package is means a lot for finding support, tutorials, etc. And if the project hasn't
-                     been starred for a while, it might be time to consider alternatives.
-                  </span>,
+                  <span>How popular a package is means a lot for finding support, tutorials, etc.</span>,
                   'star'
                )}
                {renderSingleBenefit(
                   'Project license',
                   <span>
-                     Not every project has the awesome "MIT" license, which can mean trouble for how and when you use
-                     dependencies with more stringent legal requirements.
+                     Not every project has the awesome "MIT" license, which can mean trouble if not understood and
+                     addressed.
                   </span>,
                   'file-text'
                )}
                {renderSingleBenefit(
-                  'Important links',
-                  <span>
-                     Rather than randomly googling and jumping from npm to docs to GitHub, DepChecker aggregates these
-                     links in a convenient interface for quick reference.
-                  </span>,
-                  'link'
+                  'Open Issues & PRs',
+                  <span>Are there too many open issues compared to the popularity of the dependency?</span>,
+                  'fork'
                )}
             </div>
+            <h3 style={{ margin: '50px 0px 20px 0px', fontSize: 20, fontWeight: 500 }}>
+               <i>And this just scratches the surface of what DepChecker plans to offer.</i>
+            </h3>
+            <Button
+               type="secondary"
+               size="large"
+               shape="round"
+               href={'https://github.com/ryanjyost/depchecker/issues/new'}
+               target={'_blank'}>
+               <i>Submit feature ideas</i>
+            </Button>
          </div>
       );
    };
@@ -726,16 +782,80 @@ export default function Landing() {
       );
    };
 
-   const SectionHeader = ({ children }) => {
+   const Pricing = ({ styles }) => {
+      return (
+         <div
+            id="pricing"
+            style={{
+               display: 'flex',
+               alignItems: 'center',
+               flexDirection: 'column',
+               paddingTop: 50
+            }}>
+            <SectionHeader>Pricing</SectionHeader>
+            <div
+               style={{
+                  maxWidth: 700,
+                  paddingTop: 20,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+               }}>
+               <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <h1 style={{ fontSize: 60 }}>$0</h1>
+                  <p style={{ fontSize: 20, lineHeight: 1.2, paddingLeft: 20 }}>
+                     per <strong>public</strong> repo
+                     <br /> <i>per month</i>
+                  </p>
+               </div>
+               <div style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+                  <div
+                     style={{
+                        width: 80,
+                        height: 2,
+                        backgroundColor: COLORS.whiteOp(0.6),
+                        position: 'absolute',
+                        top: '50%',
+                        left: 0,
+                        transform: 'rotate(-45deg)'
+                     }}
+                  />
+                  <div
+                     style={{
+                        width: 80,
+                        height: 2,
+                        backgroundColor: COLORS.whiteOp(0.6),
+                        position: 'absolute',
+                        top: '50%',
+                        left: 0,
+                        transform: 'rotate(45deg)'
+                     }}
+                  />
+                  <h1 style={{ fontSize: 60, color: COLORS.whiteOp(0.4), marginRight: 10 }}>$3</h1>
+                  <h1 style={{ fontSize: 60 }}>$0</h1>
+                  <p style={{ fontSize: 20, lineHeight: 1.2, paddingLeft: 20 }}>
+                     per <strong>private</strong> repo
+                     <br /> <i>per month</i>
+                  </p>
+               </div>
+               <h5 style={{ color: COLORS.blue, fontSize: 20, marginTop: 20 }}>Free beta for a limited time 🎉</h5>
+            </div>
+         </div>
+      );
+   };
+
+   const SectionHeader = ({ id, children }) => {
       return (
          <h1
+            id={id}
             style={{
                textAlign: 'center',
                fontWeight: '900',
                display: 'inline-block',
                padding: '0px 30px 5px 30px',
                // color: styles.blackOp(1),
-               fontSize: 26,
+               fontSize: 30,
                marginBottom: 10
             }}>
             {children}
@@ -759,28 +879,49 @@ export default function Landing() {
       );
    };
 
-   const Last = () => {
+   const Last = ({ styles }) => {
       return (
          <div
             style={{
                display: 'flex',
                alignItems: 'center',
-               flexDirection: 'column',
-               // backgroundColor: styles.whiteOp(0.05),
-               border: `1px solid ${styles.blue}`,
-               padding: '50px 20px',
-               borderRadius: 5,
-               maxWidth: 800,
-               margin: 'auto'
+               flexWrap: 'wrap',
+               justifyContent: 'center'
             }}>
-            <SectionHeader>
-               <span>If it saves you time...why not?</span>
-            </SectionHeader>
-            <Link to={ROUTES.BASIC_INDEX}>
-               <Button id={`ctaBottomLanding`} size={'large'} type={'primary'} style={{ marginTop: 20 }}>
-                  <span style={{ paddingRight: 8, fontWeight: 'bold' }}>Analyze dependencies</span> &rarr;
+            <div style={{ flex: 1, padding: '40px 20px 0px 20px', textAlign: 'center' }}>
+               <h1
+                  style={{
+                     fontSize: 40,
+                     lineHeight: 1.2,
+                     fontWeight: '700',
+                     paddingRight: 20,
+                     marginBottom: 50
+                  }}>
+                  It will save your team time - so give it a try!
+               </h1>
+               <Button
+                  shape="round"
+                  type="primary"
+                  size="large"
+                  className={'pulsingButton'}
+                  href={`https://github.com/apps/${process.env.REACT_APP_GH_APP_NAME}/installations/new`}>
+                  <Icon style={{ color: '#fff' }} color={'#fff'} type="github" />
+                  Add DepChecker to Github
                </Button>
-            </Link>
+               {/*<h5*/}
+               {/*   style={{*/}
+               {/*      paddingLeft: 5,*/}
+               {/*      maxWidth: 300,*/}
+               {/*      opacity: 0.6*/}
+               {/*   }}>*/}
+               {/*   No need to provide email, payment or spare kidney for for basic version.*/}
+               {/*</h5>*/}
+            </div>
+            {/*<div style={{ flex: 1.3, padding: 10 }}>*/}
+            {/*   <BrowserPreview styles={styles} isMain>*/}
+            {/*      <img src={"/depchecker-preview.png"} width="100%" />*/}
+            {/*   </BrowserPreview>*/}
+            {/*</div>*/}
          </div>
       );
    };
@@ -792,12 +933,15 @@ export default function Landing() {
                maxWidth: 1100,
                minHeight: '100vh',
                width: '100%',
-               margin: 'auto',
+               margin: 'auto'
             }}>
             <BasicHeader />
-            <div style={{ padding: '150px 20px 50px 20px' }}>
+            <div style={{ padding: '0px 20px 50px 20px' }}>
                <First styles={styles} />
             </div>{' '}
+            <div style={{ padding: '120px 20px 100px 20px' }}>
+               <HowItWorks styles={styles} />
+            </div>
             <div style={{ padding: '100px 20px 100px 20px' }}>
                <PotentialIssues />
             </div>
@@ -809,22 +953,23 @@ export default function Landing() {
             {/*   }}>*/}
             {/*   <Explanation styles={styles} />*/}
             {/*</div>*/}
-            <div style={{ padding: '100px 20px 100px 20px' }}>
-               <HowItWorks styles={styles} />
+            {/*<div style={{ padding: '200px 20px 50px 20px' }}>*/}
+            {/*   <Benefits styles={styles} />*/}
+            {/*</div>*/}
+            {/*<div style={{ padding: '100px 20px 100px 20px' }}>*/}
+            {/*   /!*<Features styles={styles} />*!/*/}
+            {/*   <Features />*/}
+            {/*</div>*/}
+            <div style={{ padding: '60px 20px 150px 20px' }}>
+               <Pricing styles={styles} />
             </div>
-            <div style={{ padding: '50px 20px 50px 20px' }}>
-               <Benefits styles={styles} />
-            </div>
-            <div style={{ padding: '100px 20px 100px 20px' }}>
-               {/*<Features styles={styles} />*/}
-               <Features />
-            </div>
-            <div style={{ padding: '50px 20px 100px 20px' }}>
-               <BehindTheCurtain styles={styles} />
-            </div>
-            <div style={{ padding: '50px 20px 100px 20px' }}>
+            {/*<div style={{ padding: '50px 20px 100px 20px' }}>*/}
+            {/*   <BehindTheCurtain styles={styles} />*/}
+            {/*</div>*/}
+            <div style={{ padding: '50px 20px 300px 20px' }}>
                <Last styles={styles} />
             </div>
+            <BasicFooter />
          </div>
       </Root>
    );

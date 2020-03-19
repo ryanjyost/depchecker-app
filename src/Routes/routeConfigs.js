@@ -12,7 +12,10 @@ import {
    Login,
    AuthRedirect,
    SelectRepos,
-   SetupComplete
+   SetupComplete,
+   MarketingLanding,
+   Terms,
+   Privacy
 } from 'Components/pages';
 import { RootRouteWithSubRoutes } from 'Components/routes';
 const { Title } = Typography;
@@ -21,13 +24,16 @@ const { Title } = Typography;
  * An array of route configs, with nested objects/arrays in the same structure of the app's routes
  */
 const ROUTES = [
-   { key: 'INDEX', path: '/', title: 'Analysis', component: FullAnalysisOptions, exact: true },
+   { key: 'DEMO', path: '/demo', title: 'Analysis', component: FullAnalysisOptions, exact: true },
+   { key: 'TERMS', path: '/terms', title: 'Terms', component: Terms, exact: true },
+   { key: 'PRIVACY', path: '/privacy', title: 'Privacy', component: Privacy, exact: true },
    { key: 'RESULTS', path: '/analysis', title: 'Results', component: BasicResults, exact: true },
    { key: 'LOGIN', path: '/login', title: 'Log In', component: Login, exact: true },
    { key: 'AUTH_REDIRECT', path: '/auth', title: 'Auth', component: AuthRedirect },
    { key: 'SETUP_REPOS', path: '/setup_repos', title: 'Setup Repos', component: SelectRepos, exact: true },
    { key: 'SETUP_COMPLETE', path: '/setup_complete', title: 'Setup Complete', component: SetupComplete, exact: true },
    { key: 'LANDING_PREMIUM', path: '/premium', title: 'Premium', component: PremiumLanding, exact: true },
+   { key: 'INDEX', path: '/', title: 'Index', component: MarketingLanding, exact: true },
    {
       key: 'BASIC_ROOT',
       path: '/basic',

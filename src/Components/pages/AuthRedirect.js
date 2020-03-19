@@ -31,20 +31,19 @@ function AuthRedirect({ login, setupNewInstallation, installation }) {
       if (params.setup_action && params.setup_action === 'install') {
          const { code, installation_id } = params;
          setupNewInstallation(code, installation_id);
-      } else {
-         login(params.code);
       }
+      // else {
+      //    login(params.code);
+      // }
    }, []);
 
    if (installation) {
-      if (!installation.repos.length) {
-         return <Redirect to={RouteMap.SETUP_REPOS} />;
-      }
+      return <Redirect to={RouteMap.SETUP_COMPLETE} />;
    }
 
    return (
       <Root>
-         <Content>Loading</Content>
+         <Content>Setting up your account...</Content>
       </Root>
    );
 }
